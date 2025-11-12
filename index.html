@@ -20,26 +20,21 @@
     .col-3{grid-column:span 12}
     @media (min-width:820px){ .col-6{grid-column:span 6} .col-4{grid-column:span 4} .col-3{grid-column:span 3} }
     h2{font-size:16px;margin:0 0 12px 0;color:var(--brand)}
-    label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}
+    label{font-size:12px;color:#5d6b82;display:block;margin-bottom:6px}
     .row{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
-    input[type="text"],input[type="date"],input[type="number"],select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);background:#fff;border-radius:8px;font-size:14px}
+    input[type=text],input[type=date],select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);background:#fff;border-radius:8px;font-size:14px}
     textarea{min-height:88px}
     .inline{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
-    .inline label{margin:0}
     .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px}
     .btn{appearance:none;border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 12px;font-size:13px;cursor:pointer}
     .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
-    .btn.icon{display:inline-flex;align-items:center;gap:8px}
     .table{width:100%;border-collapse:separate;border-spacing:0 8px}
-    .table th{font-size:12px;color:var(--muted);text-align:left;padding:0 8px}
+    .table th{font-size:12px;color:#5d6b82;text-align:left;padding:0 8px}
     .table td{background:#fff;border:1px solid var(--line);padding:8px;border-left:0;border-right:0}
     .table td:first-child{border-left:1px solid var(--line);border-top-left-radius:8px;border-bottom-left-radius:8px}
     .table td:last-child{border-right:1px solid var(--line);border-top-right-radius:8px;border-bottom-right-radius:8px}
     .actions{display:flex;gap:8px}
     .section-actions{display:flex;justify-content:flex-end;margin-top:8px}
-    .muted{color:var(--muted)}
-    .note{font-size:12px;color:var(--muted)}
-    hr{border:none;border-top:1px dashed var(--line);margin:12px 0}
     @media print{header{color:#000;background:#fff;border-bottom:2px solid #000}.btn,.section-actions,#downloadHtml,#emailFormBtn{display:none}.card{break-inside:avoid}}
   </style>
 </head>
@@ -47,56 +42,324 @@
   <header>
     <h1>Sundance Networks – New Setup / Migration / Reinstall</h1>
     <div class="modes">
-      <span class="chip"><input type="checkbox" id="modeNew"/> <label for="modeNew">New Set Up</label></span>
-      <span class="chip"><input type="checkbox" id="modeMigration"/> <label for="modeMigration">Migration</label></span>
-      <span class="chip"><input type="checkbox" id="modeReinstall"/> <label for="modeReinstall">Reinstall</label></span>
+      <span class="chip"><input type="checkbox" id="modeNew"> <label for="modeNew">New Set Up</label></span>
+      <span class="chip"><input type="checkbox" id="modeMigration"> <label for="modeMigration">Migration</label></span>
+      <span class="chip"><input type="checkbox" id="modeReinstall"> <label for="modeReinstall">Reinstall</label></span>
     </div>
   </header>
 
   <main>
+    <!-- Client / Device -->
     <section class="grid">
       <div class="card col-6">
         <h2>Client</h2>
         <div class="row">
-          <div class="col-6"><label>Client Name</label><input type="text"/></div>
-          <div class="col-6"><label>Company</label><input type="text"/></div>
-          <div class="col-6"><label>Date</label><input type="date"/></div>
-          <div class="col-6"><label>Employee Initials</label><input type="text"/></div>
-        </div>\n      </div>
+          <div class="col-6"><label>Client Name</label><input type="text"></div>
+          <div class="col-6"><label>Company</label><input type="text"></div>
+          <div class="col-6"><label>Date</label><input type="date"></div>
+          <div class="col-6"><label>Employee Initials</label><input type="text"></div>
+        </div>
+      </div>
       <div class="card col-6">
         <h2>Device</h2>
         <div class="row">
-          <div class="col-4"><label>Manufacturer</label><input type="text"/></div>
-          <div class="col-4"><label>Model</label><input type="text"/></div>
-          <div class="col-4"><label>Asset Tag / Serial #</label><input type="text"/></div>
+          <div class="col-4"><label>Manufacturer</label><input type="text"></div>
+          <div class="col-4"><label>Model</label><input type="text"></div>
+          <div class="col-4"><label>Asset Tag / Serial #</label><input type="text"></div>
         </div>
-        <hr/>
+        <hr>
         <div class="row">
-          <div class="col-6"><label>OLD User Name</label><input type="text"/></div>
-          <div class="col-6"><label>OLD Password</label><input type="text"/></div>
-          <div class="col-6"><label>NEW User Name</label><input type="text"/></div>
-          <div class="col-6"><label>NEW Password</label><input type="text"/></div>
+          <div class="col-6"><label>OLD User Name</label><input type="text"></div>
+          <div class="col-6"><label>OLD Password</label><input type="text"></div>
+          <div class="col-6"><label>NEW User Name</label><input type="text"></div>
+          <div class="col-6"><label>NEW Password</label><input type="text"></div>
         </div>
-        <hr/>
+        <hr>
         <div class="row">
-          <div class="col-6"><label>OLD PC Name</label><input type="text"/></div>
-          <div class="col-6"><label>OLD Domain / Work Group</label><input type="text"/></div>
-          <div class="col-6"><label>NEW PC Name</label><input type="text"/></div>
-          <div class="col-6"><label>NEW Domain / Work Group</label><input type="text"/></div>
+          <div class="col-6"><label>OLD PC Name</label><input type="text"></div>
+          <div class="col-6"><label>OLD Domain / Work Group</label><input type="text"></div>
+          <div class="col-6"><label>NEW PC Name</label><input type="text"></div>
+          <div class="col-6"><label>NEW Domain / Work Group</label><input type="text"></div>
         </div>
       </div>
     </section>
 
-    <!-- the rest omitted for brevity in this placeholder build -->
+    <!-- Tables -->
+    <section class="card" style="margin-top:16px">
+      <div class="inline" style="justify-content:space-between;align-items:center">
+        <h2 style="margin:0">Network Drives</h2>
+        <div class="inline">
+          <label class="inline"><input type="checkbox"> Manual</label>
+          <label class="inline"><input type="checkbox"> Login Script</label>
+          <label class="inline"><input type="checkbox"> GPO</label>
+        </div>
+      </div>
+      <table class="table" id="drivesTable">
+        <thead><tr><th style="width:120px">Drive Letter</th><th>Drive Name</th><th>Path</th><th style="width:100px">Actions</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="section-actions"><button class="btn" type="button" onclick="addRow('drives')">＋ Add Drive</button></div>
+    </section>
+
+    <section class="card" style="margin-top:16px">
+      <h2>Backups</h2>
+      <table class="table" id="backupsTable">
+        <thead><tr><th style="width:220px">Backup Software</th><th>Local / Path</th><th>Cloud / Credentials</th><th style="width:100px">Actions</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="section-actions"><button class="btn" type="button" onclick="addRow('backups')">＋ Add Backup</button></div>
+    </section>
+
+    <section class="card" style="margin-top:16px">
+      <h2>EDR / Antivirus</h2>
+      <div class="row">
+        <div class="col-6"><label>Platform</label>
+          <select>
+            <option value="">Select…</option>
+            <option>CrowdStrike Falcon</option>
+            <option>Microsoft Defender for Endpoint</option>
+            <option>SentinelOne</option>
+            <option>Sophos Intercept X</option>
+            <option>VMware Carbon Black</option>
+            <option>Trend Micro Apex One</option>
+            <option>ESET Protect</option>
+            <option>Bitdefender GravityZone</option>
+            <option>Datto EDR</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="col-6"><label>Credentials / Notes</label><input type="text"></div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:16px">
+      <h2>Applications</h2>
+      <table class="table" id="appsTable">
+        <thead><tr><th>Application</th><th style="width:160px">Version</th><th>Key / Credentials</th><th style="width:100px">Actions</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="section-actions"><button class="btn" type="button" onclick="addRow('apps')">＋ Add Application</button></div>
+    </section>
+
+    <section class="card" style="margin-top:16px">
+      <h2>Printers</h2>
+      <table class="table" id="printersTable">
+        <thead><tr><th>Printer Name</th><th style="width:160px">Port / IP</th><th style="width:200px">Driver</th><th style="width:120px">Type</th><th style="width:120px">Tested?</th><th style="width:100px">Actions</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="section-actions"><button class="btn" type="button" onclick="addRow('printers')">＋ Add Printer</button></div>
+    </section>
+
+    <section class="card" style="margin-top:16px">
+      <h2>Scan to PC</h2>
+      <table class="table" id="scanTable">
+        <thead><tr><th>Software</th><th>Folder Path</th><th style="width:140px">OCR Used?</th><th style="width:120px">Tested?</th><th style="width:100px">Actions</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="row" style="margin-top:8px">
+        <div class="col-6"><label>Credentials – U/N</label><input type="text"></div>
+        <div class="col-6"><label>Credentials – PW</label><input type="text"></div>
+      </div>
+      <div class="section-actions"><button class="btn" type="button" onclick="addRow('scan')">＋ Add Destination</button></div>
+    </section>
+
+    <section class="card" style="margin-top:16px">
+      <h2>Other / Misc</h2>
+      <div class="row">
+        <div class="col-3"><label>Default Browser</label>
+          <select>
+            <option>Microsoft Edge</option>
+            <option>Google Chrome</option>
+            <option>Mozilla Firefox</option>
+            <option>Opera</option>
+            <option>Brave</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="col-3"><label>Default PDF Reader</label><input type="text"></div>
+        <div class="col-3"><label>Default Printer</label>
+          <select id="defaultPrinter"><option value="">Select…</option></select>
+        </div>
+        <div class="col-3"><label>Time Zone</label><input type="text"></div>
+        <div class="col-3"><label>Firewall</label>
+          <select><option>Yes</option><option>No</option><option>N/A</option></select>
+        </div>
+        <div class="col-3"><label>Windows Color Mode</label>
+          <select><option>Light</option><option>Dark</option><option>Custom</option></select>
+        </div>
+        <div class="col-3"><label>Windows Updates</label>
+          <select><option>Yes</option><option>No</option><option>N/A</option></select>
+        </div>
+        <div class="col-3"><label>Disable Tablet Mode</label>
+          <select><option>Yes</option><option>No</option><option>N/A</option></select>
+        </div>
+        <div class="col-3"><label>Desktop Wallpaper</label>
+          <select><option>Yes</option><option>No</option><option>N/A</option></select>
+        </div>
+        <div class="col-3"><label>MS Teams</label>
+          <select><option>Yes</option><option>No</option><option>N/A</option></select>
+        </div>
+        <div class="col-3"><label>Icon Arrangement</label>
+          <select><option>Yes</option><option>No</option><option>N/A</option></select>
+        </div>
+        <div class="col-3"><label>Power Settings Config</label>
+          <select><option>Yes</option><option>No</option><option>N/A</option></select>
+        </div>
+        <div class="col-3"><label>Credential Manager</label>
+          <select><option>Yes</option><option>No</option><option>N/A</option></select>
+        </div>
+        <div class="col-6"><label>Local Admin – Username</label><input type="text"></div>
+        <div class="col-6"><label>Local Admin – Password</label><input type="text"></div>
+      </div>
+      <hr>
+      <h3 style="margin:4px 0 8px;color:#5d6b82">Other Location Wi‑Fi Profiles</h3>
+      <table class="table" id="wifiTable">
+        <thead><tr><th>SSID</th><th>Password</th><th style="width:100px">Actions</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="section-actions"><button class="btn" type="button" onclick="addRow('wifi')">＋ Add Wi‑Fi</button></div>
+    </section>
+
+    <section class="card" style="margin-top:16px">
+      <h2>Data Migration</h2>
+      <div class="inline" style="margin:6px 0 14px"><label class="inline"><input type="radio" name="mig" checked> Yes</label><label class="inline"><input type="radio" name="mig"> No</label></div>
+      <div class="row">
+        <div class="col-6">
+          <label style="color:#5d6b82">User profile folders</label>
+          <div class="inline">
+            <label class="inline"><input type="checkbox"> Favorites</label>
+            <label class="inline"><input type="checkbox"> Desktop</label>
+            <label class="inline"><input type="checkbox"> Documents</label>
+            <label class="inline"><input type="checkbox"> Downloads</label>
+            <label class="inline"><input type="checkbox"> Links</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <label style="color:#5d6b82">User profile folders</label>
+          <div class="inline">
+            <label class="inline"><input type="checkbox"> Pictures</label>
+            <label class="inline"><input type="checkbox"> Videos</label>
+            <label class="inline"><input type="checkbox"> Music/iTunes</label>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top:12px">
+        <div class="col-12"><label>Non‑standard Windows folders in root of local drives</label>
+          <table class="table" id="localFoldersTable">
+            <thead><tr><th>Location / Notes</th><th style="width:100px">Actions</th></tr></thead>
+            <tbody></tbody>
+          </table>
+          <div class="section-actions"><button class="btn" type="button" onclick="addRow('localFolders')">＋ Add Item</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:16px">
+      <div class="inline" style="justify-content:space-between;align-items:center"><h2 style="margin:0">Email Accounts</h2>
+        <button class="btn" type="button" onclick="addEmail()">＋ Add Email Account</button>
+      </div>
+      <div id="emailContainer"></div>
+    </section>
+
+    <section class="card" style="margin-top:16px">
+      <h2>Outlook Migration</h2>
+      <div class="row">
+        <div class="col-3"><label>PST</label><select><option>Yes</option><option>No</option><option>N/A</option></select></div>
+        <div class="col-3"><label>Auto Complete / Stream / NK2</label><select><option>Yes</option><option>No</option><option>N/A</option></select></div>
+        <div class="col-3"><label>Signatures</label><select><option>Yes</option><option>No</option><option>N/A</option></select></div>
+        <div class="col-3"><label>User Settings Export</label><select><option>Yes</option><option>No</option><option>N/A</option></select></div>
+        <div class="col-3"><label>Calendars</label><select><option>Yes</option><option>No</option><option>N/A</option></select></div>
+        <div class="col-3"><label>Contacts</label><select><option>Yes</option><option>No</option><option>N/A</option></select></div>
+      </div>
+      <p style="font-size:12px;color:#5d6b82">Registry locations intentionally omitted per requirements.</p>
+    </section>
+
+    <section class="card" style="margin-top:16px">
+      <h2>EDR / RMM – Internal Use</h2>
+      <table class="table" id="edrRmmTable">
+        <thead><tr><th>Item</th><th style="width:200px">Action</th><th>Emailed To</th><th style="width:160px">Date</th><th style="width:100px">Actions</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="section-actions"><button class="btn" type="button" onclick="addRow('edrRmm')">＋ Add Entry</button></div>
+    </section>
+
+    <section class="grid" style="margin-top:16px">
+      <div class="card col-4">
+        <h2>Follow Up Needed?</h2>
+        <select><option>Yes</option><option>No</option></select>
+      </div>
+      <div class="card col-8">
+        <h2>Notes</h2>
+        <textarea id="notes" placeholder="Add any additional notes here…"></textarea>
+      </div>
+    </section>
+
     <div class="inline" style="margin:24px; gap:12px; justify-content:center">
       <button id="downloadHtml" class="btn primary" type="button">💾 Save / Download HTML</button>
       <button id="emailFormBtn" class="btn" type="button">✉️ Email to Support</button>
     </div>
   </main>
 
+  <template id="row-drives"><tr><td><select class="drive-letter"></select></td><td><input type="text" placeholder="Share name"></td><td><input type="text" placeholder="\\server\share"></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></template>
+  <template id="row-backups"><tr><td><select><option value="">Select…</option><option>Veeam</option><option>Datto</option><option>Cove</option><option>Acronis</option><option>Backblaze</option><option>Carbonite</option><option>MSP360</option><option>Druva</option><option>Other</option></select></td><td><input type="text" placeholder="Local path"></td><td><input type="text" placeholder="Cloud provider / creds"></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></template>
+  <template id="row-apps"><tr><td><input type="text" placeholder="App name"></td><td><input type="text" placeholder="Version"></td><td><input type="text" placeholder="Key / credentials"></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></template>
+  <template id="row-printers"><tr><td><input type="text" placeholder="Printer name"></td><td><input type="text" placeholder="Port / IP"></td><td><input type="text" placeholder="Driver"></td><td><select><option>Color</option><option>B&W</option></select></td><td><select><option>Yes</option><option>No</option></select></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></template>
+  <template id="row-scan"><tr><td><input type="text" placeholder="Software"></td><td><input type="text" placeholder="Folder path"></td><td><select><option>Yes</option><option>No</option></select></td><td><select><option>Yes</option><option>No</option></select></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></template>
+  <template id="row-wifi"><tr><td><input type="text" placeholder="SSID"></td><td><input type="text" placeholder="Password"></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></template>
+  <template id="row-localFolders"><tr><td><input type="text" placeholder="Path and any notes"></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></template>
+  <template id="row-edrRmm"><tr><td><select><option>Agent</option><option>Antivirus</option><option>Backup</option><option>Script</option><option>Other</option></select></td><td><select><option>Additional</option><option>Swap</option><option>Remove</option></select></td><td><input type="text" placeholder="Recipients (e.g., JF & JM)"></td><td><input type="date"></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></template>
+  <template id="email-template"><div class="card" style="border:1px dashed #e6eaf0; margin-top:12px"><div class="row"><div class="col-3"><label>Application</label><select><option>Outlook</option><option>Thunderbird</option><option>Windows Mail</option><option>Web only</option><option>Other</option></select></div><div class="col-3"><label>Email Type</label><select><option>IMAP (Copy Cal & Contacts)</option><option>POP</option><option>Exchange</option><option>O365</option></select></div><div class="col-3"><label>Account</label><input type="text" placeholder="account@domain.com"></div><div class="col-3"><label>Password</label><input type="text" placeholder="••••••"></div><div class="col-12"><label>Notes</label><input type="text" placeholder="notes"></div></div></div></template>
+
   <script>
     (function(){
       const API_BASE = 'https://pc-setup-form.onrender.com';
+
+      const driveLetters = (()=>{ const letters=[]; for(let i=65;i<=90;i++){ letters.push(String.fromCharCode(i)); } return letters.filter(l=>!['A','B'].includes(l)); })();
+
+      function addRow(type){
+        const map={drives:['row-drives','drivesTable'],backups:['row-backups','backupsTable'],apps:['row-apps','appsTable'],printers:['row-printers','printersTable'],scan:['row-scan','scanTable'],wifi:['row-wifi','wifiTable'],localFolders:['row-localFolders','localFoldersTable'],edrRmm:['row-edrRmm','edrRmmTable']};
+        const entry = map[type]; if(!entry) return;
+        const [tplId, tableId] = entry; const tpl=document.getElementById(tplId); const table=document.getElementById(tableId);
+        if(!tpl||!table) return; const tbody=table.querySelector('tbody')||table.appendChild(document.createElement('tbody'));
+        const node = tpl.content.cloneNode(true);
+        if(type==='drives'){ const sel=node.querySelector('select.drive-letter'); if(sel){ driveLetters.forEach(l=>{ const o=document.createElement('option');o.textContent=l+':'; sel.appendChild(o);}); } }
+        tbody.appendChild(node); if(type==='printers') refreshPrinterChoices();
+      }
+      function removeRow(btn){ const row=btn.closest('tr'); const table=row?.closest('table'); if(row) row.remove(); if(table&&table.id==='printersTable') refreshPrinterChoices(); }
+      function addEmail(){ const tpl=document.getElementById('email-template'); if(!tpl) return; const node=tpl.content.cloneNode(true); document.getElementById('emailContainer').appendChild(node); }
+      function refreshPrinterChoices(){ const select=document.getElementById('defaultPrinter'); if(!select) return; const names=[...document.querySelectorAll('#printersTable tbody tr td:first-child input')].map(i=>i.value.trim()).filter(Boolean); const cur=select.value; select.innerHTML='<option value="">Select…</option>'+names.map(n=>`<option>${n}</option>`).join(''); if(names.includes(cur)) select.value=cur; }
+
+      window.addRow=addRow; window.removeRow=removeRow; window.addEmail=addEmail;
+
+      document.addEventListener('DOMContentLoaded',()=>{
+        const ensure=(id,t)=>{ const tb=document.getElementById(id)?.querySelector('tbody'); if(tb && tb.children.length===0){ addRow(t); } };
+        ensure('drivesTable','drives'); ensure('backupsTable','backups'); ensure('appsTable','apps'); ensure('printersTable','printers'); ensure('scanTable','scan'); ensure('wifiTable','wifi'); ensure('localFoldersTable','localFolders'); ensure('edrRmmTable','edrRmm');
+        if(!document.getElementById('emailContainer').children.length){ addEmail(); }
+        refreshPrinterChoices();
+
+        const printersTable=document.getElementById('printersTable'); printersTable && printersTable.addEventListener('input',(e)=>{ if(e.target.closest('td')?.cellIndex===0){ refreshPrinterChoices(); } });
+
+        document.getElementById('downloadHtml')?.addEventListener('click', ()=>{
+          persistFormStateToDom();
+          const doctype='<!DOCTYPE html>\n'; const html=document.documentElement.outerHTML;
+          const blob=new Blob([doctype+html],{type:'text/html'});
+          const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='sundance_new_setup_form.html'; a.click(); URL.revokeObjectURL(a.href);
+        });
+
+        const emailBtn=document.getElementById('emailFormBtn');
+        emailBtn && emailBtn.addEventListener('click', async ()=>{
+          try{
+            emailBtn.disabled=true; emailBtn.textContent='Sending…';
+            persistFormStateToDom();
+            const doctype='<!DOCTYPE html>\n'; const html=doctype + document.documentElement.outerHTML;
+            const payload={ to:'support@sundancenetworks.com', subject:'SNI – New Setup / Migration / Reinstall Form', html };
+            const res=await fetch(`${API_BASE}/send`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+            if(!res.ok) throw new Error('Email failed');
+            alert('Form emailed to support@sundancenetworks.com');
+          }catch(err){ console.error(err); alert('Could not send email. Check the Render service and credentials.'); }
+          finally{ emailBtn.disabled=false; emailBtn.textContent='✉️ Email to Support'; }
+        });
+      });
 
       function persistFormStateToDom(){
         const fields=document.querySelectorAll('input, textarea, select');
@@ -114,23 +377,6 @@
           } else { el.setAttribute('value', el.value); }
         });
       }
-
-      document.getElementById('downloadHtml')?.addEventListener('click', ()=>{
-        persistFormStateToDom();
-        const doctype='<!DOCTYPE html>\\n'; const html=document.documentElement.outerHTML;
-        const blob=new Blob([doctype+html],{type:'text/html'});
-        const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='sundance_new_setup_form.html'; a.click(); URL.revokeObjectURL(a.href);
-      });
-
-      document.getElementById('emailFormBtn')?.addEventListener('click', async ()=>{
-        try{
-          persistFormStateToDom();
-          const doctype='<!DOCTYPE html>\\n'; const html=doctype + document.documentElement.outerHTML;
-          const payload={ to:'support@sundancenetworks.com', subject:'SNI – New Setup / Migration / Reinstall Form', html };
-          const res=await fetch(`${API_BASE}/send`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
-          if(!res.ok) throw new Error('Email failed'); alert('Form emailed to support@sundancenetworks.com');
-        }catch(e){ console.error(e); alert('Could not send email. Check Render service/creds.'); }
-      });
     })();
   </script>
 </body>
