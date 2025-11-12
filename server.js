@@ -1,58 +1,81 @@
+// server.js
 import 'dotenv/config';
 import express from 'express';
-import nodemailer from 'nodemailer';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import nodemailer from 'nodemailer';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 
-/* ---------- CORS (GitHub Pages only) ---------- */
+/* ---------------- CORS (GitHub Pages origin) ---------------- */
 const ALLOWED_ORIGINS = ['https://sundancenetworks570.github.io'];
 const corsOpts = {
   origin: (origin, cb) => {
-    // allow no-origin (e.g., curl/Postman) and your allowed origin
     if (!origin || ALLOWED_ORIGINS.includes(origin)) return cb(null, true);
     return cb(new Error('CORS blocked'), false);
   },
   methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type']
+  allowedHeaders: ['Content-Type'],
 };
 app.use(cors(corsOpts));
 app.options('*', cors(corsOpts)); // preflight handler
 
-/* ---------- Basic middleware ---------- */
+/* ---------------- Basic middleware ---------------- */
 app.use(express.json({ limit: '15mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-/* ---------- Helpful request logging ---------- */
+/* ---------------- Request logging ---------------- */
 app.use((req, _res, next) => {
-  console.log(`${new Date().toISOString()} ${req.method} ${req.path}`);
+  console.log(new Date().toISOString(), req.method, req.path);
   next();
 });
 
-/* ---------- Sanity routes ---------- */
+/* ---------------- Sanity routes ---------------- */
 app.get('/', (_req, res) => res.send('mailer up'));
 app.get('/health', (_req, res) => res.send('ok'));
 
-/* ---------- Env sanity check ---------- */
+/* ---------------- Env sanity check ---------------- */
 ['SMTP_HOST','SMTP_PORT','SMTP_USER','SMTP_PASS','FROM_EMAIL'].forEach(k => {
   if (!process.env[k]) console.warn(`[warn] Missing env ${k}`);
 });
 
-/* ---------- Nodemailer (Office 365 over STARTTLS/587) ---------- */
+/* ---------------- Nodemailer (Office 365 STARTTLS/587) ----------------
+   Keep secure:false for port 587 (STARTTLS). If you use port 465, set secure:true.
+----------------------------------------------------------------------- */
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,                // smtp.office365.com
-  port: Number(process.env.SMTP_PORT || 587), // 587
-  secure: process.env.SMTP_SECURE === 'true', // keep false for 587
+  host: process.env.SMTP_HOST,                  // smtp.office365.com
+  port: Number(process.env.SMTP_PORT || 587),   // 587
+  secure: false,                                // STARTTLS
+  requireTLS: true,
+  connectionTimeout: 15000,
+  greetingTimeout: 15000,
+  socketTimeout: 20000,
   auth: {
-    user: process.env.SMTP_USER,              // mailbox
-    pass: process.env.SMTP_PASS               // password or app password
+    user: process.env.SMTP_USER,                // mailbox
+    pass: process.env.SMTP_PASS,                // password or app password (if MFA)
+  },
+  tls: {
+    servername: 'smtp.office365.com',           // SNI
+    minVersion: 'TLSv1.2',
+    // If you ever see a certificate chain error on Render, temporarily add:
+    // rejectUnauthorized: false
   }
 });
 
-/* ---------- Send endpoint ---------- */
+/* ---------------- SMTP verify route (temporary tool) ---------------- */
+app.get('/smtp-test', async (_req, res) => {
+  try {
+    await transporter.verify();                 // connects + EHLO/STARTTLS
+    res.send('✅ SMTP connection successful');
+  } catch (e) {
+    console.error('[SMTP verify failed]', e);
+    res.status(500).send('❌ SMTP failed: ' + (e?.message || e));
+  }
+});
+
+/* ---------------- Send route ---------------- */
 app.post('/send', async (req, res) => {
   try {
     const { to, subject, html } = req.body || {};
@@ -64,9 +87,7 @@ app.post('/send', async (req, res) => {
       from: process.env.FROM_EMAIL || process.env.SMTP_USER,
       to,
       subject,
-      html:
-        `<p>Completed Sundance setup/migration/reinstall form is attached and inlined below.</p>` +
-        html,
+      html: `<p>Completed Sundance setup/migration/reinstall form is attached and inlined below.</p>${html}`,
       attachments: [
         {
           filename: 'sundance_new_setup_form.html',
@@ -83,6 +104,6 @@ app.post('/send', async (req, res) => {
   }
 });
 
-/* ---------- Start server ---------- */
+/* ---------------- Start server ---------------- */
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Mail server running on ${PORT}`));
