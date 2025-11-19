@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en"><head><style type="text/css">:root{--toastify-color-light: #fff;--toastify-color-dark: #121212;--toastify-color-info: #3498db;--toastify-color-success: #07bc0c;--toastify-color-warning: #f1c40f;--toastify-color-error: hsl(6, 78%, 57%);--toastify-color-transparent: rgba(255, 255, 255, .7);--toastify-icon-color-info: var(--toastify-color-info);--toastify-icon-color-success: var(--toastify-color-success);--toastify-icon-color-warning: var(--toastify-color-warning);--toastify-icon-color-error: var(--toastify-color-error);--toastify-container-width: fit-content;--toastify-toast-width: 320px;--toastify-toast-offset: 16px;--toastify-toast-top: max(var(--toastify-toast-offset), env(safe-area-inset-top));--toastify-toast-right: max(var(--toastify-toast-offset), env(safe-area-inset-right));--toastify-toast-left: max(var(--toastify-toast-offset), env(safe-area-inset-left));--toastify-toast-bottom: max(var(--toastify-toast-offset), env(safe-area-inset-bottom));--toastify-toast-background: #fff;--toastify-toast-padding: 14px;--toastify-toast-min-height: 64px;--toastify-toast-max-height: 800px;--toastify-toast-bd-radius: 6px;--toastify-toast-shadow: 0px 4px 12px rgba(0, 0, 0, .1);--toastify-font-family: sans-serif;--toastify-z-index: 9999;--toastify-text-color-light: #757575;--toastify-text-color-dark: #fff;--toastify-text-color-info: #fff;--toastify-text-color-success: #fff;--toastify-text-color-warning: #fff;--toastify-text-color-error: #fff;--toastify-spinner-color: #616161;--toastify-spinner-color-empty-area: #e0e0e0;--toastify-color-progress-light: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);--toastify-color-progress-dark: #bb86fc;--toastify-color-progress-info: var(--toastify-color-info);--toastify-color-progress-success: var(--toastify-color-success);--toastify-color-progress-warning: var(--toastify-color-warning);--toastify-color-progress-error: var(--toastify-color-error);--toastify-color-progress-bgo: .2}.Toastify__toast-container{z-index:var(--toastify-z-index);-webkit-transform:translate3d(0,0,var(--toastify-z-index));position:fixed;width:var(--toastify-container-width);box-sizing:border-box;color:#fff;display:flex;flex-direction:column}.Toastify__toast-container--top-left{top:var(--toastify-toast-top);left:var(--toastify-toast-left)}.Toastify__toast-container--top-center{top:var(--toastify-toast-top);left:50%;transform:translate(-50%);align-items:center}.Toastify__toast-container--top-right{top:var(--toastify-toast-top);right:var(--toastify-toast-right);align-items:end}.Toastify__toast-container--bottom-left{bottom:var(--toastify-toast-bottom);left:var(--toastify-toast-left)}.Toastify__toast-container--bottom-center{bottom:var(--toastify-toast-bottom);left:50%;transform:translate(-50%);align-items:center}.Toastify__toast-container--bottom-right{bottom:var(--toastify-toast-bottom);right:var(--toastify-toast-right);align-items:end}.Toastify__toast{--y: 0;position:relative;touch-action:none;width:var(--toastify-toast-width);min-height:var(--toastify-toast-min-height);box-sizing:border-box;margin-bottom:1rem;padding:var(--toastify-toast-padding);border-radius:var(--toastify-toast-bd-radius);box-shadow:var(--toastify-toast-shadow);max-height:var(--toastify-toast-max-height);font-family:var(--toastify-font-family);z-index:0;display:flex;flex:1 auto;align-items:center;word-break:break-word}@media only screen and (max-width: 480px){.Toastify__toast-container{width:100vw;left:env(safe-area-inset-left);margin:0}.Toastify__toast-container--top-left,.Toastify__toast-container--top-center,.Toastify__toast-container--top-right{top:env(safe-area-inset-top);transform:translate(0)}.Toastify__toast-container--bottom-left,.Toastify__toast-container--bottom-center,.Toastify__toast-container--bottom-right{bottom:env(safe-area-inset-bottom);transform:translate(0)}.Toastify__toast-container--rtl{right:env(safe-area-inset-right);left:initial}.Toastify__toast{--toastify-toast-width: 100%;margin-bottom:0;border-radius:0}}.Toastify__toast-container[data-stacked=true]{width:var(--toastify-toast-width)}.Toastify__toast--stacked{position:absolute;width:100%;transform:translate3d(0,var(--y),0) scale(var(--s));transition:transform .3s}.Toastify__toast--stacked[data-collapsed] .Toastify__toast-body,.Toastify__toast--stacked[data-collapsed] .Toastify__close-button{transition:opacity .1s}.Toastify__toast--stacked[data-collapsed=false]{overflow:visible}.Toastify__toast--stacked[data-collapsed=true]:not(:last-child)>*{opacity:0}.Toastify__toast--stacked:after{content:"";position:absolute;left:0;right:0;height:calc(var(--g) * 1px);bottom:100%}.Toastify__toast--stacked[data-pos=top]{top:0}.Toastify__toast--stacked[data-pos=bot]{bottom:0}.Toastify__toast--stacked[data-pos=bot].Toastify__toast--stacked:before{transform-origin:top}.Toastify__toast--stacked[data-pos=top].Toastify__toast--stacked:before{transform-origin:bottom}.Toastify__toast--stacked:before{content:"";position:absolute;left:0;right:0;bottom:0;height:100%;transform:scaleY(3);z-index:-1}.Toastify__toast--rtl{direction:rtl}.Toastify__toast--close-on-click{cursor:pointer}.Toastify__toast-icon{margin-inline-end:10px;width:22px;flex-shrink:0;display:flex}.Toastify--animate{animation-fill-mode:both;animation-duration:.5s}.Toastify--animate-icon{animation-fill-mode:both;animation-duration:.3s}.Toastify__toast-theme--dark{background:var(--toastify-color-dark);color:var(--toastify-text-color-dark)}.Toastify__toast-theme--light,.Toastify__toast-theme--colored.Toastify__toast--default{background:var(--toastify-color-light);color:var(--toastify-text-color-light)}.Toastify__toast-theme--colored.Toastify__toast--info{color:var(--toastify-text-color-info);background:var(--toastify-color-info)}.Toastify__toast-theme--colored.Toastify__toast--success{color:var(--toastify-text-color-success);background:var(--toastify-color-success)}.Toastify__toast-theme--colored.Toastify__toast--warning{color:var(--toastify-text-color-warning);background:var(--toastify-color-warning)}.Toastify__toast-theme--colored.Toastify__toast--error{color:var(--toastify-text-color-error);background:var(--toastify-color-error)}.Toastify__progress-bar-theme--light{background:var(--toastify-color-progress-light)}.Toastify__progress-bar-theme--dark{background:var(--toastify-color-progress-dark)}.Toastify__progress-bar--info{background:var(--toastify-color-progress-info)}.Toastify__progress-bar--success{background:var(--toastify-color-progress-success)}.Toastify__progress-bar--warning{background:var(--toastify-color-progress-warning)}.Toastify__progress-bar--error{background:var(--toastify-color-progress-error)}.Toastify__progress-bar-theme--colored.Toastify__progress-bar--info,.Toastify__progress-bar-theme--colored.Toastify__progress-bar--success,.Toastify__progress-bar-theme--colored.Toastify__progress-bar--warning,.Toastify__progress-bar-theme--colored.Toastify__progress-bar--error{background:var(--toastify-color-transparent)}.Toastify__close-button{color:#fff;position:absolute;top:6px;right:6px;background:transparent;outline:none;border:none;padding:0;cursor:pointer;opacity:.7;transition:.3s ease;z-index:1}.Toastify__toast--rtl .Toastify__close-button{left:6px;right:unset}.Toastify__close-button--light{color:#000;opacity:.3}.Toastify__close-button>svg{fill:currentColor;height:16px;width:14px}.Toastify__close-button:hover,.Toastify__close-button:focus{opacity:1}@keyframes Toastify__trackProgress{0%{transform:scaleX(1)}to{transform:scaleX(0)}}.Toastify__progress-bar{position:absolute;bottom:0;left:0;width:100%;height:100%;z-index:1;opacity:.7;transform-origin:left}.Toastify__progress-bar--animated{animation:Toastify__trackProgress linear 1 forwards}.Toastify__progress-bar--controlled{transition:transform .2s}.Toastify__progress-bar--rtl{right:0;left:initial;transform-origin:right;border-bottom-left-radius:initial}.Toastify__progress-bar--wrp{position:absolute;overflow:hidden;bottom:0;left:0;width:100%;height:5px;border-bottom-left-radius:var(--toastify-toast-bd-radius);border-bottom-right-radius:var(--toastify-toast-bd-radius)}.Toastify__progress-bar--wrp[data-hidden=true]{opacity:0}.Toastify__progress-bar--bg{opacity:var(--toastify-color-progress-bgo);width:100%;height:100%}.Toastify__spinner{width:20px;height:20px;box-sizing:border-box;border:2px solid;border-radius:100%;border-color:var(--toastify-spinner-color-empty-area);border-right-color:var(--toastify-spinner-color);animation:Toastify__spin .65s linear infinite}@keyframes Toastify__bounceInRight{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(3000px,0,0)}60%{opacity:1;transform:translate3d(-25px,0,0)}75%{transform:translate3d(10px,0,0)}90%{transform:translate3d(-5px,0,0)}to{transform:none}}@keyframes Toastify__bounceOutRight{20%{opacity:1;transform:translate3d(-20px,var(--y),0)}to{opacity:0;transform:translate3d(2000px,var(--y),0)}}@keyframes Toastify__bounceInLeft{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(-3000px,0,0)}60%{opacity:1;transform:translate3d(25px,0,0)}75%{transform:translate3d(-10px,0,0)}90%{transform:translate3d(5px,0,0)}to{transform:none}}@keyframes Toastify__bounceOutLeft{20%{opacity:1;transform:translate3d(20px,var(--y),0)}to{opacity:0;transform:translate3d(-2000px,var(--y),0)}}@keyframes Toastify__bounceInUp{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(0,3000px,0)}60%{opacity:1;transform:translate3d(0,-20px,0)}75%{transform:translate3d(0,10px,0)}90%{transform:translate3d(0,-5px,0)}to{transform:translateZ(0)}}@keyframes Toastify__bounceOutUp{20%{transform:translate3d(0,calc(var(--y) - 10px),0)}40%,45%{opacity:1;transform:translate3d(0,calc(var(--y) + 20px),0)}to{opacity:0;transform:translate3d(0,-2000px,0)}}@keyframes Toastify__bounceInDown{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(0,-3000px,0)}60%{opacity:1;transform:translate3d(0,25px,0)}75%{transform:translate3d(0,-10px,0)}90%{transform:translate3d(0,5px,0)}to{transform:none}}@keyframes Toastify__bounceOutDown{20%{transform:translate3d(0,calc(var(--y) - 10px),0)}40%,45%{opacity:1;transform:translate3d(0,calc(var(--y) + 20px),0)}to{opacity:0;transform:translate3d(0,2000px,0)}}.Toastify__bounce-enter--top-left,.Toastify__bounce-enter--bottom-left{animation-name:Toastify__bounceInLeft}.Toastify__bounce-enter--top-right,.Toastify__bounce-enter--bottom-right{animation-name:Toastify__bounceInRight}.Toastify__bounce-enter--top-center{animation-name:Toastify__bounceInDown}.Toastify__bounce-enter--bottom-center{animation-name:Toastify__bounceInUp}.Toastify__bounce-exit--top-left,.Toastify__bounce-exit--bottom-left{animation-name:Toastify__bounceOutLeft}.Toastify__bounce-exit--top-right,.Toastify__bounce-exit--bottom-right{animation-name:Toastify__bounceOutRight}.Toastify__bounce-exit--top-center{animation-name:Toastify__bounceOutUp}.Toastify__bounce-exit--bottom-center{animation-name:Toastify__bounceOutDown}@keyframes Toastify__zoomIn{0%{opacity:0;transform:scale3d(.3,.3,.3)}50%{opacity:1}}@keyframes Toastify__zoomOut{0%{opacity:1}50%{opacity:0;transform:translate3d(0,var(--y),0) scale3d(.3,.3,.3)}to{opacity:0}}.Toastify__zoom-enter{animation-name:Toastify__zoomIn}.Toastify__zoom-exit{animation-name:Toastify__zoomOut}@keyframes Toastify__flipIn{0%{transform:perspective(400px) rotateX(90deg);animation-timing-function:ease-in;opacity:0}40%{transform:perspective(400px) rotateX(-20deg);animation-timing-function:ease-in}60%{transform:perspective(400px) rotateX(10deg);opacity:1}80%{transform:perspective(400px) rotateX(-5deg)}to{transform:perspective(400px)}}@keyframes Toastify__flipOut{0%{transform:translate3d(0,var(--y),0) perspective(400px)}30%{transform:translate3d(0,var(--y),0) perspective(400px) rotateX(-20deg);opacity:1}to{transform:translate3d(0,var(--y),0) perspective(400px) rotateX(90deg);opacity:0}}.Toastify__flip-enter{animation-name:Toastify__flipIn}.Toastify__flip-exit{animation-name:Toastify__flipOut}@keyframes Toastify__slideInRight{0%{transform:translate3d(110%,0,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideInLeft{0%{transform:translate3d(-110%,0,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideInUp{0%{transform:translate3d(0,110%,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideInDown{0%{transform:translate3d(0,-110%,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideOutRight{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(110%,var(--y),0)}}@keyframes Toastify__slideOutLeft{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(-110%,var(--y),0)}}@keyframes Toastify__slideOutDown{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(0,500px,0)}}@keyframes Toastify__slideOutUp{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(0,-500px,0)}}.Toastify__slide-enter--top-left,.Toastify__slide-enter--bottom-left{animation-name:Toastify__slideInLeft}.Toastify__slide-enter--top-right,.Toastify__slide-enter--bottom-right{animation-name:Toastify__slideInRight}.Toastify__slide-enter--top-center{animation-name:Toastify__slideInDown}.Toastify__slide-enter--bottom-center{animation-name:Toastify__slideInUp}.Toastify__slide-exit--top-left,.Toastify__slide-exit--bottom-left{animation-name:Toastify__slideOutLeft;animation-timing-function:ease-in;animation-duration:.3s}.Toastify__slide-exit--top-right,.Toastify__slide-exit--bottom-right{animation-name:Toastify__slideOutRight;animation-timing-function:ease-in;animation-duration:.3s}.Toastify__slide-exit--top-center{animation-name:Toastify__slideOutUp;animation-timing-function:ease-in;animation-duration:.3s}.Toastify__slide-exit--bottom-center{animation-name:Toastify__slideOutDown;animation-timing-function:ease-in;animation-duration:.3s}@keyframes Toastify__spin{0%{transform:rotate(0)}to{transform:rotate(360deg)}}
+</style><style type="text/css">:root{--toastify-color-light: #fff;--toastify-color-dark: #121212;--toastify-color-info: #3498db;--toastify-color-success: #07bc0c;--toastify-color-warning: #f1c40f;--toastify-color-error: hsl(6, 78%, 57%);--toastify-color-transparent: rgba(255, 255, 255, .7);--toastify-icon-color-info: var(--toastify-color-info);--toastify-icon-color-success: var(--toastify-color-success);--toastify-icon-color-warning: var(--toastify-color-warning);--toastify-icon-color-error: var(--toastify-color-error);--toastify-container-width: fit-content;--toastify-toast-width: 320px;--toastify-toast-offset: 16px;--toastify-toast-top: max(var(--toastify-toast-offset), env(safe-area-inset-top));--toastify-toast-right: max(var(--toastify-toast-offset), env(safe-area-inset-right));--toastify-toast-left: max(var(--toastify-toast-offset), env(safe-area-inset-left));--toastify-toast-bottom: max(var(--toastify-toast-offset), env(safe-area-inset-bottom));--toastify-toast-background: #fff;--toastify-toast-padding: 14px;--toastify-toast-min-height: 64px;--toastify-toast-max-height: 800px;--toastify-toast-bd-radius: 6px;--toastify-toast-shadow: 0px 4px 12px rgba(0, 0, 0, .1);--toastify-font-family: sans-serif;--toastify-z-index: 9999;--toastify-text-color-light: #757575;--toastify-text-color-dark: #fff;--toastify-text-color-info: #fff;--toastify-text-color-success: #fff;--toastify-text-color-warning: #fff;--toastify-text-color-error: #fff;--toastify-spinner-color: #616161;--toastify-spinner-color-empty-area: #e0e0e0;--toastify-color-progress-light: linear-gradient(to right, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);--toastify-color-progress-dark: #bb86fc;--toastify-color-progress-info: var(--toastify-color-info);--toastify-color-progress-success: var(--toastify-color-success);--toastify-color-progress-warning: var(--toastify-color-warning);--toastify-color-progress-error: var(--toastify-color-error);--toastify-color-progress-bgo: .2}.Toastify__toast-container{z-index:var(--toastify-z-index);-webkit-transform:translate3d(0,0,var(--toastify-z-index));position:fixed;width:var(--toastify-container-width);box-sizing:border-box;color:#fff;display:flex;flex-direction:column}.Toastify__toast-container--top-left{top:var(--toastify-toast-top);left:var(--toastify-toast-left)}.Toastify__toast-container--top-center{top:var(--toastify-toast-top);left:50%;transform:translate(-50%);align-items:center}.Toastify__toast-container--top-right{top:var(--toastify-toast-top);right:var(--toastify-toast-right);align-items:end}.Toastify__toast-container--bottom-left{bottom:var(--toastify-toast-bottom);left:var(--toastify-toast-left)}.Toastify__toast-container--bottom-center{bottom:var(--toastify-toast-bottom);left:50%;transform:translate(-50%);align-items:center}.Toastify__toast-container--bottom-right{bottom:var(--toastify-toast-bottom);right:var(--toastify-toast-right);align-items:end}.Toastify__toast{--y: 0;position:relative;touch-action:none;width:var(--toastify-toast-width);min-height:var(--toastify-toast-min-height);box-sizing:border-box;margin-bottom:1rem;padding:var(--toastify-toast-padding);border-radius:var(--toastify-toast-bd-radius);box-shadow:var(--toastify-toast-shadow);max-height:var(--toastify-toast-max-height);font-family:var(--toastify-font-family);z-index:0;display:flex;flex:1 auto;align-items:center;word-break:break-word}@media only screen and (max-width: 480px){.Toastify__toast-container{width:100vw;left:env(safe-area-inset-left);margin:0}.Toastify__toast-container--top-left,.Toastify__toast-container--top-center,.Toastify__toast-container--top-right{top:env(safe-area-inset-top);transform:translate(0)}.Toastify__toast-container--bottom-left,.Toastify__toast-container--bottom-center,.Toastify__toast-container--bottom-right{bottom:env(safe-area-inset-bottom);transform:translate(0)}.Toastify__toast-container--rtl{right:env(safe-area-inset-right);left:initial}.Toastify__toast{--toastify-toast-width: 100%;margin-bottom:0;border-radius:0}}.Toastify__toast-container[data-stacked=true]{width:var(--toastify-toast-width)}.Toastify__toast--stacked{position:absolute;width:100%;transform:translate3d(0,var(--y),0) scale(var(--s));transition:transform .3s}.Toastify__toast--stacked[data-collapsed] .Toastify__toast-body,.Toastify__toast--stacked[data-collapsed] .Toastify__close-button{transition:opacity .1s}.Toastify__toast--stacked[data-collapsed=false]{overflow:visible}.Toastify__toast--stacked[data-collapsed=true]:not(:last-child)>*{opacity:0}.Toastify__toast--stacked:after{content:"";position:absolute;left:0;right:0;height:calc(var(--g) * 1px);bottom:100%}.Toastify__toast--stacked[data-pos=top]{top:0}.Toastify__toast--stacked[data-pos=bot]{bottom:0}.Toastify__toast--stacked[data-pos=bot].Toastify__toast--stacked:before{transform-origin:top}.Toastify__toast--stacked[data-pos=top].Toastify__toast--stacked:before{transform-origin:bottom}.Toastify__toast--stacked:before{content:"";position:absolute;left:0;right:0;bottom:0;height:100%;transform:scaleY(3);z-index:-1}.Toastify__toast--rtl{direction:rtl}.Toastify__toast--close-on-click{cursor:pointer}.Toastify__toast-icon{margin-inline-end:10px;width:22px;flex-shrink:0;display:flex}.Toastify--animate{animation-fill-mode:both;animation-duration:.5s}.Toastify--animate-icon{animation-fill-mode:both;animation-duration:.3s}.Toastify__toast-theme--dark{background:var(--toastify-color-dark);color:var(--toastify-text-color-dark)}.Toastify__toast-theme--light,.Toastify__toast-theme--colored.Toastify__toast--default{background:var(--toastify-color-light);color:var(--toastify-text-color-light)}.Toastify__toast-theme--colored.Toastify__toast--info{color:var(--toastify-text-color-info);background:var(--toastify-color-info)}.Toastify__toast-theme--colored.Toastify__toast--success{color:var(--toastify-text-color-success);background:var(--toastify-color-success)}.Toastify__toast-theme--colored.Toastify__toast--warning{color:var(--toastify-text-color-warning);background:var(--toastify-color-warning)}.Toastify__toast-theme--colored.Toastify__toast--error{color:var(--toastify-text-color-error);background:var(--toastify-color-error)}.Toastify__progress-bar-theme--light{background:var(--toastify-color-progress-light)}.Toastify__progress-bar-theme--dark{background:var(--toastify-color-progress-dark)}.Toastify__progress-bar--info{background:var(--toastify-color-progress-info)}.Toastify__progress-bar--success{background:var(--toastify-color-progress-success)}.Toastify__progress-bar--warning{background:var(--toastify-color-progress-warning)}.Toastify__progress-bar--error{background:var(--toastify-color-progress-error)}.Toastify__progress-bar-theme--colored.Toastify__progress-bar--info,.Toastify__progress-bar-theme--colored.Toastify__progress-bar--success,.Toastify__progress-bar-theme--colored.Toastify__progress-bar--warning,.Toastify__progress-bar-theme--colored.Toastify__progress-bar--error{background:var(--toastify-color-transparent)}.Toastify__close-button{color:#fff;position:absolute;top:6px;right:6px;background:transparent;outline:none;border:none;padding:0;cursor:pointer;opacity:.7;transition:.3s ease;z-index:1}.Toastify__toast--rtl .Toastify__close-button{left:6px;right:unset}.Toastify__close-button--light{color:#000;opacity:.3}.Toastify__close-button>svg{fill:currentColor;height:16px;width:14px}.Toastify__close-button:hover,.Toastify__close-button:focus{opacity:1}@keyframes Toastify__trackProgress{0%{transform:scaleX(1)}to{transform:scaleX(0)}}.Toastify__progress-bar{position:absolute;bottom:0;left:0;width:100%;height:100%;z-index:1;opacity:.7;transform-origin:left}.Toastify__progress-bar--animated{animation:Toastify__trackProgress linear 1 forwards}.Toastify__progress-bar--controlled{transition:transform .2s}.Toastify__progress-bar--rtl{right:0;left:initial;transform-origin:right;border-bottom-left-radius:initial}.Toastify__progress-bar--wrp{position:absolute;overflow:hidden;bottom:0;left:0;width:100%;height:5px;border-bottom-left-radius:var(--toastify-toast-bd-radius);border-bottom-right-radius:var(--toastify-toast-bd-radius)}.Toastify__progress-bar--wrp[data-hidden=true]{opacity:0}.Toastify__progress-bar--bg{opacity:var(--toastify-color-progress-bgo);width:100%;height:100%}.Toastify__spinner{width:20px;height:20px;box-sizing:border-box;border:2px solid;border-radius:100%;border-color:var(--toastify-spinner-color-empty-area);border-right-color:var(--toastify-spinner-color);animation:Toastify__spin .65s linear infinite}@keyframes Toastify__bounceInRight{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(3000px,0,0)}60%{opacity:1;transform:translate3d(-25px,0,0)}75%{transform:translate3d(10px,0,0)}90%{transform:translate3d(-5px,0,0)}to{transform:none}}@keyframes Toastify__bounceOutRight{20%{opacity:1;transform:translate3d(-20px,var(--y),0)}to{opacity:0;transform:translate3d(2000px,var(--y),0)}}@keyframes Toastify__bounceInLeft{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(-3000px,0,0)}60%{opacity:1;transform:translate3d(25px,0,0)}75%{transform:translate3d(-10px,0,0)}90%{transform:translate3d(5px,0,0)}to{transform:none}}@keyframes Toastify__bounceOutLeft{20%{opacity:1;transform:translate3d(20px,var(--y),0)}to{opacity:0;transform:translate3d(-2000px,var(--y),0)}}@keyframes Toastify__bounceInUp{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(0,3000px,0)}60%{opacity:1;transform:translate3d(0,-20px,0)}75%{transform:translate3d(0,10px,0)}90%{transform:translate3d(0,-5px,0)}to{transform:translateZ(0)}}@keyframes Toastify__bounceOutUp{20%{transform:translate3d(0,calc(var(--y) - 10px),0)}40%,45%{opacity:1;transform:translate3d(0,calc(var(--y) + 20px),0)}to{opacity:0;transform:translate3d(0,-2000px,0)}}@keyframes Toastify__bounceInDown{0%,60%,75%,90%,to{animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;transform:translate3d(0,-3000px,0)}60%{opacity:1;transform:translate3d(0,25px,0)}75%{transform:translate3d(0,-10px,0)}90%{transform:translate3d(0,5px,0)}to{transform:none}}@keyframes Toastify__bounceOutDown{20%{transform:translate3d(0,calc(var(--y) - 10px),0)}40%,45%{opacity:1;transform:translate3d(0,calc(var(--y) + 20px),0)}to{opacity:0;transform:translate3d(0,2000px,0)}}.Toastify__bounce-enter--top-left,.Toastify__bounce-enter--bottom-left{animation-name:Toastify__bounceInLeft}.Toastify__bounce-enter--top-right,.Toastify__bounce-enter--bottom-right{animation-name:Toastify__bounceInRight}.Toastify__bounce-enter--top-center{animation-name:Toastify__bounceInDown}.Toastify__bounce-enter--bottom-center{animation-name:Toastify__bounceInUp}.Toastify__bounce-exit--top-left,.Toastify__bounce-exit--bottom-left{animation-name:Toastify__bounceOutLeft}.Toastify__bounce-exit--top-right,.Toastify__bounce-exit--bottom-right{animation-name:Toastify__bounceOutRight}.Toastify__bounce-exit--top-center{animation-name:Toastify__bounceOutUp}.Toastify__bounce-exit--bottom-center{animation-name:Toastify__bounceOutDown}@keyframes Toastify__zoomIn{0%{opacity:0;transform:scale3d(.3,.3,.3)}50%{opacity:1}}@keyframes Toastify__zoomOut{0%{opacity:1}50%{opacity:0;transform:translate3d(0,var(--y),0) scale3d(.3,.3,.3)}to{opacity:0}}.Toastify__zoom-enter{animation-name:Toastify__zoomIn}.Toastify__zoom-exit{animation-name:Toastify__zoomOut}@keyframes Toastify__flipIn{0%{transform:perspective(400px) rotateX(90deg);animation-timing-function:ease-in;opacity:0}40%{transform:perspective(400px) rotateX(-20deg);animation-timing-function:ease-in}60%{transform:perspective(400px) rotateX(10deg);opacity:1}80%{transform:perspective(400px) rotateX(-5deg)}to{transform:perspective(400px)}}@keyframes Toastify__flipOut{0%{transform:translate3d(0,var(--y),0) perspective(400px)}30%{transform:translate3d(0,var(--y),0) perspective(400px) rotateX(-20deg);opacity:1}to{transform:translate3d(0,var(--y),0) perspective(400px) rotateX(90deg);opacity:0}}.Toastify__flip-enter{animation-name:Toastify__flipIn}.Toastify__flip-exit{animation-name:Toastify__flipOut}@keyframes Toastify__slideInRight{0%{transform:translate3d(110%,0,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideInLeft{0%{transform:translate3d(-110%,0,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideInUp{0%{transform:translate3d(0,110%,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideInDown{0%{transform:translate3d(0,-110%,0);visibility:visible}to{transform:translate3d(0,var(--y),0)}}@keyframes Toastify__slideOutRight{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(110%,var(--y),0)}}@keyframes Toastify__slideOutLeft{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(-110%,var(--y),0)}}@keyframes Toastify__slideOutDown{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(0,500px,0)}}@keyframes Toastify__slideOutUp{0%{transform:translate3d(0,var(--y),0)}to{visibility:hidden;transform:translate3d(0,-500px,0)}}.Toastify__slide-enter--top-left,.Toastify__slide-enter--bottom-left{animation-name:Toastify__slideInLeft}.Toastify__slide-enter--top-right,.Toastify__slide-enter--bottom-right{animation-name:Toastify__slideInRight}.Toastify__slide-enter--top-center{animation-name:Toastify__slideInDown}.Toastify__slide-enter--bottom-center{animation-name:Toastify__slideInUp}.Toastify__slide-exit--top-left,.Toastify__slide-exit--bottom-left{animation-name:Toastify__slideOutLeft;animation-timing-function:ease-in;animation-duration:.3s}.Toastify__slide-exit--top-right,.Toastify__slide-exit--bottom-right{animation-name:Toastify__slideOutRight;animation-timing-function:ease-in;animation-duration:.3s}.Toastify__slide-exit--top-center{animation-name:Toastify__slideOutUp;animation-timing-function:ease-in;animation-duration:.3s}.Toastify__slide-exit--bottom-center{animation-name:Toastify__slideOutDown;animation-timing-function:ease-in;animation-duration:.3s}@keyframes Toastify__spin{0%{transform:rotate(0)}to{transform:rotate(360deg)}}
+</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sundance – New Setup / Migration / Reinstall</title>
+  <style>
+    :root{ --brand:#0a2540; --accent:#1778f2; --bg:#fff4e6; --card:#ffffff; --muted:#667085; --line:#e6eaf0; }
+    *{box-sizing:border-box}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif;line-height:1.5;margin:0;background:var(--bg);color:#0b1220}
+    header{background:var(--brand);color:#fff;padding:24px 20px;text-align:center}
+    header h1{margin:0;font-size:22px;font-weight:700;letter-spacing:.3px;text-align:center}
+    header .modes{margin-top:12px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+    main{padding:20px;max-width:1100px;margin:0 auto}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+    .col-12{grid-column:span 12}
+    .col-6{grid-column:span 12}
+    .col-4{grid-column:span 12}
+    .col-3{grid-column:span 12}
+    @media (min-width:820px){ .col-6{grid-column:span 6} .col-4{grid-column:span 4} .col-3{grid-column:span 3} }
+    h2{font-size:16px;margin:0 0 12px 0;color:var(--brand)}
+    label{font-size:12px;color:#5d6b82;display:block;margin-bottom:6px}
+    .row{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+    input[type=text],input[type=date],select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);background:#fff;border-radius:8px;font-size:14px}
+    textarea{min-height:88px}
+    .inline{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px}
+    .btn{appearance:none;border:1px solid var(--line);background:#fff;border-radius:10px;padding:8px 12px;font-size:13px;cursor:pointer}
+    .btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .table{width:100%;border-collapse:separate;border-spacing:0 8px}
+    .table th{font-size:12px;color:#5d6b82;text-align:left;padding:0 8px}
+    .table td{background:#fff;border:1px solid var(--line);padding:8px;border-left:0;border-right:0}
+    .table td:first-child{border-left:1px solid var(--line);border-top-left-radius:8px;border-bottom-left-radius:8px}
+    .table td:last-child{border-right:1px solid var(--line);border-top-right-radius:8px;border-bottom-right-radius:8px}
+    .actions{display:flex;gap:8px}
+    .section-actions{display:flex;justify-content:flex-end;margin-top:8px}
+    @media print{header{color:#000;background:#fff;border-bottom:2px solid #000}.btn,.section-actions,#downloadHtml,#emailFormBtn{display:none}.card{break-inside:avoid}}
+  </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script><style type="text/css" data-guidde-blur-css="true">
+/* Repetition and !important are needed to override host page top-level styles */
+/* CSS Variables are defined by JS */
+
+.GUIDDE-JS-BlurCandidate.GUIDDE-JS-BlurCandidate.GUIDDE-JS-BlurCandidate {
+    background-color: var(--guidde-highlight-bg) !important;
+    outline: var(--guidde-highlight-border) !important;
+}
+
+.GUIDDE-JS-AutoBlurred.GUIDDE-JS-AutoBlurred.GUIDDE-JS-AutoBlurred,
+.GUIDDE-JS-Blurred.GUIDDE-JS-Blurred.GUIDDE-JS-Blurred {
+    filter: var(--guidde-blur) !important;
+}
+</style>
+<style>
+/* === Sundance Form v16 polish ============================================ */
+:root{
+  --card-radius: 14px;
+  --card-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  --card-border: 1px solid rgba(20,25,38,0.08);
+  --muted: #5d6b82;
+}
+html, body { scroll-behavior: smooth; }
+main, .container { max-width: 1200px; margin: 0 auto; }
+.grid { gap: 16px; }                 /* tighter, consistent spacing between grid items */
+section.card { margin-top: 16px; }   /* uniform vertical rhythm for cards */
+h2 { margin: 0 0 10px 0; font-size: 18px; }
+
+.card {
+  border: var(--card-border);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: 16px;
+  background: #fffdf9; /* subtle lift against warm page bg */
+}
+
+/* Input polish */
+.form-control, input[type="text"], input[type="date"], select, textarea {
+  border-radius: 10px;
+  border: 1px solid rgba(20,25,38,0.18);
+  padding: 8px 10px;
+}
+
+/* Notes textarea: wide and comfy */
+#notes {
+  width: 100%;
+  min-height: 200px;
+  resize: vertical;
+}
+
+/* Section action rows and bottom buttons */
+.section-actions { margin-top: 10px; }
+.inline[style*="justify-content:center"] { gap: 14px !important; }
+
+/* Paste zones visual consistency */
+#pasteZoneOutlook, #pasteContainer textarea, #pasteContainerOutlook .form-control {
+  border-radius: 10px;
+  border: 2px dashed #9bb5ff;
+  background: #fafcff;
+}
+#pasteGalleryOutlook .col-3 { margin-bottom: 8px; }
+
+/* Print-friendly tweaks for PDF export */
+@media print {
+  body { background: #ffffff; }
+  .card { box-shadow: none; }
+}
+/* ======================================================================== */
+
+/* Floating side toolbar for save/clear buttons */
+.floating-side-buttons {
+  position: fixed;
+  right: 24px;
+  top: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 50;
+}
+
+.floating-side-buttons .btn {
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+/* On smaller screens, move toolbar lower and slightly inward */
+@media (max-width: 900px) {
+  .floating-side-buttons {
+    right: 12px;
+    top: auto;
+    bottom: 90px;
+    flex-direction: column;
+  }
+}
+
+/* On very narrow screens, make buttons full-width-ish */
+@media (max-width: 640px) {
+  .floating-side-buttons {
+    right: 8px;
+    left: 8px;
+    bottom: 16px;
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+
+  .floating-side-buttons .btn {
+    flex: 0 0 auto;
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+</style>
+<link type="text/css" rel="stylesheet" href="chrome-extension://bfcdaalpeodhimbiipneeaoeogkkminc/css/fontfaces.css"><link type="text/css" rel="stylesheet" href="chrome-extension://mlhdnjepakdfdaabohjgegnomlgeejep/css/fontfaces.css">
+<div class="floating-side-buttons" aria-label="Form data controls">
+  <button id="saveCurrentDataBtn" type="button" class="btn">💾 Save Current Data</button>
+  <button id="clearSavedForm" type="button" class="btn danger">🧹 Clear Saved Data</button>
+</div>
+
+<link type="text/css" rel="stylesheet" href="chrome-extension://bfcdaalpeodhimbiipneeaoeogkkminc/css/content.css"><link type="text/css" rel="stylesheet" href="chrome-extension://mlhdnjepakdfdaabohjgegnomlgeejep/css/content.css"></head><guidde-record id="GUIDDE_JS_RECORD_UI" dir="ltr" style="position: relative; z-index: 999999999;"></guidde-record>
+<body>
+  <header>
+    <h1>Sundance Networks – New Setup / Migration / Reinstall</h1>
+    <div class="modes">
+      <span class="chip"><input type="checkbox" id="modeNew" value="on"> <label for="modeNew">New Set Up</label></span>
+      <span class="chip"><input type="checkbox" id="modeMigration" value="on"> <label for="modeMigration">Migration</label></span>
+      <span class="chip"><input type="checkbox" id="modeReinstall" value="on"> <label for="modeReinstall">Reinstall</label></span>
+    </div>
+  </header>
+
+  <main>
+    <!-- Client / Device -->
+    <section class="grid">
+      <div class="card col-12" <h2="">Client
+        <div class="row">
+          <div class="col-6"><label>Client Name</label><input type="text" id="clientName" value=""></div>
+          <div class="col-6"><label>Company</label><input type="text" id="companyName" value=""><div data-lastpass-icon-root="" style="position: relative !important; height: 0px !important; width: 0px !important; display: initial !important; float: left !important;"></div></div>
+          <div class="col-6"><label>Date</label><input type="date" value=""></div>
+          <div class="col-6"><label>Employee Initials</label><input type="text" value=""></div>
+        </div>
+      </div>
+      <div class="card col-12" <h2="">Device
+        <div class="row">
+          <div class="col-4"><label>Manufacturer</label><input type="text" value=""></div>
+          <div class="col-4"><label>Model</label><input type="text" value=""></div>
+          <div class="col-4"><label>Asset Tag / Serial #</label><input type="text" value=""></div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-6"><label>OLD User Name</label><input type="text" value=""><div data-lastpass-icon-root="" style="position: relative !important; height: 0px !important; width: 0px !important; display: initial !important; float: left !important;"></div></div>
+          <div class="col-6"><label>OLD Password</label><input type="text" value=""></div>
+          <div class="col-6"><label>NEW User Name</label><input type="text" value=""><div data-lastpass-icon-root="" style="position: relative !important; height: 0px !important; width: 0px !important; display: initial !important; float: left !important;"></div></div>
+          <div class="col-6"><label>NEW Password</label><input type="text" value=""></div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-6"><label>OLD PC Name</label><input type="text" value=""></div>
+          <div class="col-6"><label>OLD Domain / Work Group</label><input type="text" value=""></div>
+          <div class="col-6"><label>NEW PC Name</label><input type="text" value=""></div>
+          <div class="col-6"><label>NEW Domain / Work Group</label><input type="text" value=""></div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      (function() {
+        const editionEl = document.getElementById('officeEdition');
+        const keyField = document.getElementById('officeKeyField');
+        const emailField = document.getElementById('officeEmailField');
+        const passField = document.getElementById('officePasswordField');
+
+        function updateVisibility() {
+          const val = (editionEl.value || '').toLowerCase();
+          const is365 = val.includes('365');
+          // Hide key for 365 subscriptions; show otherwise
+          if (keyField) keyField.style.display = is365 ? 'none' : '';
+          // Always show email/password; requested "show only email/password" for 365 already satisfied by hiding key
+          if (emailField) emailField.style.display = '';
+          if (passField) passField.style.display = '';
+        }
+
+        if (editionEl) {
+          editionEl.addEventListener('change', updateVisibility);
+          // Run once on load
+          updateVisibility();
+        }
+      })();
+    </script>
+
+    <!-- Tables -->
+    <section class="card">
+      <div class="inline" style="justify-content:space-between;align-items:center">
+        <h2 style="margin:0">Network Drives</h2>
+        <div class="inline">
+          <label class="inline"><input type="checkbox" value="on"> Manual</label>
+          <label class="inline"><input type="checkbox" value="on"> Login Script</label>
+          <label class="inline"><input type="checkbox" value="on"> GPO</label>
+        </div>
+      </div>
+      <table class="table" id="drivesTable">
+        <thead><tr><th style="width:120px">Drive Letter</th><th>Drive Name</th><th>Path</th><th style="width:100px">Actions</th></tr></thead>
+        <tbody><tr><td><select class="drive-letter" data-current-value="C:"><option selected="">C:</option><option>D:</option><option>E:</option><option>F:</option><option>G:</option><option>H:</option><option>I:</option><option>J:</option><option>K:</option><option>L:</option><option>M:</option><option>N:</option><option>O:</option><option>P:</option><option>Q:</option><option>R:</option><option>S:</option><option>T:</option><option>U:</option><option>V:</option><option>W:</option><option>X:</option><option>Y:</option><option>Z:</option></select></td><td><input type="text" placeholder="Share name" value=""></td><td><input type="text" placeholder="\\server\share" value=""></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)" sop="true">Remove</button></td></tr></tbody>
+      </table>
+      <div class="section-actions"><button class="btn" type="button" onclick="addRow('drives')" sop="true">＋ Add Drive</button></div>
+    </section>
+
+    <section class="card">
+      <h2>Backups</h2>
+      <table class="table" id="backupsTable">
+        <thead><tr><th style="width:220px">Backup Software</th><th>Local / Path</th><th>Cloud / Credentials</th><th style="width:100px">Actions</th></tr></thead>
+        <tbody><tr><td><select data-current-value=""><option value="" selected="">Select…</option><option>Veeam</option><option>Datto</option><option>Cove</option><option>Acronis</option><option>Backblaze</option><option>Carbonite</option><option>MSP360</option><option>Druva</option><option>Other</option></select></td><td><input type="text" placeholder="Local path" value=""></td><td><input type="text" placeholder="Cloud provider / creds" value=""></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)" sop="true">Remove</button></td></tr></tbody>
+      </table>
+      <div class="section-actions"><button class="btn" type="button" onclick="addRow('backups')" sop="true">＋ Add Backup</button></div>
+    </section>
+
+    <section class="card">
+      <h2>EDR / Antivirus</h2>
+      <div class="row">
+        <div class="col-6"><label>Platform</label>
+          <select data-current-value="">
+            <option value="" selected="">Select…</option>
+            <option>CrowdStrike Falcon</option>
+            <option>Microsoft Defender for Endpoint</option>
+            <option>SentinelOne</option>
+            <option>Sophos Intercept X</option>
+            <option>VMware Carbon Black</option>
+            <option>Trend Micro Apex One</option>
+            <option>ESET Protect</option>
+            <option>Bitdefender GravityZone</option>
+            <option>Datto EDR</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="col-6"><label>Credentials / Notes</label><input type="text" value=""></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Applications</h2>
+
+<!-- Open To Paste controls -->
+<div class="row" id="openToPasteRow" style="margin-top:10px;">
+  <div class="col-12">
+    <button id="btnOpenPaste" class="btn btn-outline-primary" type="button" sop="true">Open To Paste</button>
+  </div>
+  <div class="col-12" id="pasteContainer" style="display:none; margin-top:10px;">
+    <label for="pasteApps"><strong>Paste Application List:</strong></label>
+    <textarea id="pasteApps" class="form-control" rows="8" placeholder="Paste applications here, one per line..."></textarea>
+  </div>
+</div>
+
+      <table class="table" id="appsTable">
+        <thead><tr><th>Application</th><th style="width:160px">Version</th><th>Key / Credentials</th><th style="width:100px">Actions</th></tr></thead>
+        <tbody><tr><td><input type="text" placeholder="App name" value=""></td><td><input type="text" placeholder="Version" value=""></td><td><input type="text" placeholder="Key / credentials" value=""></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)" sop="true">Remove</button></td></tr></tbody>
+      </table>
+      <div class="section-actions"><button class="btn" type="button" onclick="addRow('apps')">＋ Add Application</button></div>
+    </section>
+<section class="card" style="margin-top:16px">
+  <div class="inline" style="justify-content:space-between;align-items:center">
+    <div class="inline" style="align-items:center; gap:8px;">
+      <h2 style="margin:0">Browsers</h2>
+      <button class="btn" type="button" onclick="window.open('WiFi Guide.pdf', '_blank')">Help?</button>
+    </div>
+    <button class="btn" type="button" onclick="addBrowser()">＋ Add Browser</button>
+  </div>
+  <div id="browserContainer"><div class="card" id="browserRow_0" style="margin-top: 12px;">
+      <div class="row">
+        <div class="col-3">
+          <label>Browser</label>
+          <select id="browser_0" class="form-control" data-current-value="Chrome"><option selected="">Chrome</option><option>Edge</option><option>Firefox</option><option>Safari</option><option>Brave</option><option>Opera</option><option>Other</option></select>
+        </div>
+        <div class="col-3">
+          <label>Sync Login?</label>
+          <select id="browserSync_0" class="form-control" data-current-value=""><option value="" selected="">Select…</option><option>No</option><option>Yes</option></select>
+        </div>
+        <div class="col-3 sync-cred" id="syncCreds_0" style="display:none">
+          <label>Login Username</label>
+          <input id="browserUser_0" type="text" class="form-control" placeholder="username or email" value="">
+        </div>
+        <div class="col-3 sync-cred" id="syncCreds2_0" style="display:none">
+          <label>Login Password</label>
+          <input id="browserPass_0" type="password" class="form-control" placeholder="password" value="">
+        </div>
+
+        <div class="col-12" style="margin-top:10px;">
+          <button class="btn btn-outline-primary" id="btnOpenPasteBrowser_0" type="button">Open To Paste</button>
+          <div id="pasteContainerBrowser_0" style="display:none; margin-top:10px;">
+            <div class="row">
+              <div class="col-8">
+                <label for="pasteBrowser_0"><strong>Paste Browser Passwords (CSV text or list):</strong></label>
+                <textarea id="pasteBrowser_0" class="form-control" rows="6" placeholder="Paste passwords here (e.g., site,user,pass)..."></textarea>
+              </div>
+              <div class="col-4">
+                <label for="csvBrowser_0"><strong>Attach CSV file:</strong></label>
+                <input id="csvBrowser_0" type="file" class="form-control" accept=".csv,text/csv" value="">
+                <div id="csvPreview_0" style="margin-top:8px; font-size:12px; color:var(--muted)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12" style="margin-top:10px;">
+          <button class="btn" type="button" onclick="removeBrowser(0)">Remove</button>
+        </div>
+      </div>
+    </div></div>
+</section>
+
+<script>
+(function(){
+  let browserIndex = 0;
+  const BROWSER_OPTIONS = ['Chrome','Edge','Firefox','Safari','Brave','Opera','Other'];
+
+  window.addBrowser = function addBrowser(prefill) {
+    const i = browserIndex++;
+    const sel = BROWSER_OPTIONS.map(b => '<option>'+b+'</option>').join('');
+    const row = document.createElement('div');
+    row.className = 'card';
+    row.style.marginTop = '12px';
+    row.id = 'browserRow_'+i;
+    row.innerHTML = `
+      <div class="row">
+        <div class="col-3">
+          <label>Browser</label>
+          <select id="browser_${i}" class="form-control">`+sel+`</select>
+        </div>
+        <div class="col-3">
+          <label>Sync Login?</label>
+          <select id="browserSync_${i}" class="form-control"><option value="">Select…</option><option>No</option><option>Yes</option></select>
+        </div>
+        <div class="col-3 sync-cred" id="syncCreds_${i}" style="display:none">
+          <label>Login Username</label>
+          <input id="browserUser_${i}" type="text" class="form-control" placeholder="username or email">
+        </div>
+        <div class="col-3 sync-cred" id="syncCreds2_${i}" style="display:none">
+          <label>Login Password</label>
+          <input id="browserPass_${i}" type="password" class="form-control" placeholder="password">
+        </div>
+
+        <div class="col-12" style="margin-top:10px;">
+          <button class="btn btn-outline-primary" id="btnOpenPasteBrowser_${i}" type="button">Open To Paste</button>
+          <div id="pasteContainerBrowser_${i}" style="display:none; margin-top:10px;">
+            <div class="row">
+              <div class="col-8">
+                <label for="pasteBrowser_${i}"><strong>Paste Browser Passwords (CSV text or list):</strong></label>
+                <textarea id="pasteBrowser_${i}" class="form-control" rows="6" placeholder="Paste passwords here (e.g., site,user,pass)..."></textarea>
+              </div>
+              <div class="col-4">
+                <label for="csvBrowser_${i}"><strong>Attach CSV file:</strong></label>
+                <input id="csvBrowser_${i}" type="file" class="form-control" accept=".csv,text/csv">
+                <div id="csvPreview_${i}" style="margin-top:8px; font-size:12px; color:var(--muted)"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12" style="margin-top:10px;">
+          <button class="btn" type="button" onclick="removeBrowser(${i})">Remove</button>
+        </div>
+      </div>
+    `;
+
+    document.getElementById('browserContainer').appendChild(row);
+
+    // Prefill if provided
+    if (prefill) {
+      if (prefill.browser) document.getElementById('browser_'+i).value = prefill.browser;
+      if (prefill.sync) document.getElementById('browserSync_'+i).value = prefill.sync ? 'Yes' : 'No';
+      if (prefill.username) document.getElementById('browserUser_'+i).value = prefill.username;
+      if (prefill.password) document.getElementById('browserPass_'+i).value = prefill.password;
+      if (prefill.paste) document.getElementById('pasteBrowser_'+i).value = prefill.paste;
+    }
+
+    // Toggle Sync creds
+    document.getElementById('browserSync_'+i).addEventListener('change', function(){
+      const show = this.value === 'Yes';
+      document.getElementById('syncCreds_'+i).style.display = show ? 'block' : 'none';
+      document.getElementById('syncCreds2_'+i).style.display = show ? 'block' : 'none';
+    });
+
+    // Toggle paste area
+    document.getElementById('btnOpenPasteBrowser_'+i).addEventListener('click', function(){
+      const box = document.getElementById('pasteContainerBrowser_'+i);
+      const hidden = (box.style.display === 'none' || box.style.display === '');
+      box.style.display = hidden ? 'block' : 'none';
+      this.textContent = hidden ? 'Hide Paste Area' : 'Open To Paste';
+    });
+
+    // CSV upload -> read text into textarea + small preview
+    document.getElementById('csvBrowser_'+i).addEventListener('change', function(){
+      const file = this.files && this.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e){
+        const text = e.target.result || '';
+        document.getElementById('pasteBrowser_'+i).value = text;
+        const lines = text.split(/\r?\n/).slice(0,5).join('\n');
+        document.getElementById('csvPreview_'+i).textContent = lines ? ('Preview:\n'+lines) : 'No preview';
+      };
+      reader.readAsText(file);
+    });
+  };
+
+  window.removeBrowser = function(id){
+    const row = document.getElementById('browserRow_'+id);
+    if (row) row.remove();
+  };
+
+  // Start with one browser row
+  document.addEventListener('DOMContentLoaded', function(){
+    if (document.getElementById('browserContainer') && !document.querySelector('[id^="browserRow_"]')) {
+      addBrowser();
+    }
+  });
+})();
+</script>
+
+    <section class="card">
+      <h2>Microsoft Office</h2>
+      <div class="row">
+        <div class="col-3">
+          <label>Year</label>
+          <select id="officeYear" data-current-value="">
+            <option value="" selected="">Select…</option>
+            
+            <option>2013</option>
+            <option>2016</option>
+            <option>2019</option>
+            <option>2021</option>
+            <option>2024</option>
+          
+          </select>
+        </div>
+        <div class="col-3">
+          <label>Edition / Version</label>
+          <select id="officeEdition" data-current-value="">
+            <option value="" selected="">Select…</option>
+            <option>Home &amp; Student</option>
+            <option>Home &amp; Business</option>
+            <option>Professional</option>
+            <option>Professional Plus</option>
+            <option>Premium</option>
+            <option>O365</option>
+            <option>Microsoft 365 (Apps)</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="col-3" id="officeKeyField">
+          <label>Activation Key</label>
+          <input type="text" placeholder="XXXXX-XXXXX-XXXXX-XXXXX-XXXXX" value="">
+        </div>
+        <div class="col-3" id="officeEmailField">
+          <label>Activation Email</label>
+          <input type="text" placeholder="email@domain.com" value="">
+        </div>
+        <div class="col-3" id="officePasswordField">
+          <label>Activation Password</label>
+          <input type="text" placeholder="••••••" value="">
+        </div>
+        <div class="col-12">
+          <label>Notes</label>
+          <input type="text" placeholder="Tenant / portal, purchase ref, license details…" value="">
+        </div>
+      </div>
+    </section>
+    <section class="card">
+      <div class="inline" style="justify-content:space-between;align-items:center">
+        <div class="inline" style="align-items:center; gap:8px;">
+          <h2 style="margin:0">QuickBooks</h2>
+          <button class="btn" type="button" onclick="window.open('QuickBooks Guide.pdf', '_blank')">Help?</button>
+        </div>
+      </div>
+      <div class="row" style="margin-top:10px;">
+        <div class="col-3">
+          <label>QuickBooks Installed?</label>
+          <select id="quickbooksToggle" data-current-value="">
+            <option value="" selected="">Select…</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+      </div>
+      <div id="quickbooksDetails" style="display:none; margin-top:10px;">
+        <div class="row">
+          <div class="col-3">
+            <label>Year</label>
+            <select id="quickbooksYear" data-current-value="">
+              <option value="" selected="">Select…</option>
+              <option>2010</option>
+              <option>2011</option>
+              <option>2012</option>
+              <option>2013</option>
+              <option>2014</option>
+              <option>2015</option>
+              <option>2016</option>
+              <option>2017</option>
+              <option>2018</option>
+              <option>2019</option>
+              <option>2020</option>
+              <option>2021</option>
+              <option>2022</option>
+              <option>2023</option>
+              <option>2024</option>
+              <option>2025</option>
+              <option>2026</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <label>Edition / Version</label>
+            <select id="quickbooksEdition" data-current-value="">
+              <option value="" selected="">Select…</option>
+              <option>Pro</option>
+              <option>Premier</option>
+              <option>Accountant</option>
+              <option>Enterprise</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <label>License Code</label>
+            <input type="text" id="quickbooksLicense" value="">
+          </div>
+          <div class="col-3">
+            <label>Product Code</label>
+            <input type="text" id="quickbooksProduct" value="">
+          </div>
+        </div>
+        <div class="row" style="margin-top:10px;">
+          <div class="col-12">
+            <label>qbw.ini / .ini Settings</label>
+            <textarea id="quickbooksIni" class="form-control" rows="4" placeholder="Paste or type INI settings here…"></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="card">
+      <h2>Printers</h2>
+      <table class="table" id="printersTable">
+        <thead><tr><th>Printer Name</th><th style="width:160px">Port / IP</th><th style="width:200px">Driver</th><th style="width:120px">Type</th><th style="width:120px">Shared?</th><th style="width:100px">Actions</th></tr></thead>
+        <tbody><tr><td><input type="text" placeholder="Printer name" value=""></td><td><input type="text" placeholder="Port / IP" value=""></td><td><input type="text" placeholder="Driver" value=""></td><td><select data-current-value="Color"><option selected="">Color</option><option>B&amp;W</option></select></td><td><select class="printer-shared-select" data-current-value=""><option value="" selected="">Select…</option><option value="yes">Yes</option><option value="no">No</option></select></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></tbody>
+      </table>
+      <div class="section-actions"><button class="btn" type="button" onclick="addRow('printers')">＋ Add Printer</button></div>
+    </section>
+
+    <section class="card" id="printerSharedSection" style="display:none;">
+      <h2>Printer Shared to Computers</h2>
+      <div class="row">
+        <div class="col-12">
+          <label>Computers this printer is shared to</label>
+          <textarea id="printerSharedComputers" class="form-control" rows="3" placeholder="PC1, PC2, PC3…"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Default Printer</h2>
+      <div class="row">
+        <div class="col-6">
+          <label>Select Default Printer</label>
+          <select id="defaultPrinter" data-current-value=""><option value="" selected="">Select…</option></select>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      (function() {
+        const printerContainer = document.getElementById('printersContainer');
+        const defaultSelect = document.getElementById('defaultPrinter');
+
+        function updateDefaultPrinterOptions() {
+          if (!printerContainer || !defaultSelect) return;
+          const printerNames = printerContainer.querySelectorAll('input[name="printerName[]"]');
+          const current = defaultSelect.value;
+          defaultSelect.innerHTML = '<option value="">Select…</option>';
+          printerNames.forEach(inp => {
+            if (inp.value.trim() !== '') {
+              const opt = document.createElement('option');
+              opt.textContent = inp.value.trim();
+              opt.value = inp.value.trim();
+              defaultSelect.appendChild(opt);
+            }
+          });
+          // Keep previously selected if still available
+          if (current) defaultSelect.value = current;
+        }
+
+        // Rebuild the list whenever a printer name changes
+        const observer = new MutationObserver(updateDefaultPrinterOptions);
+        if (printerContainer) {
+          observer.observe(printerContainer, { childList: true, subtree: true });
+          printerContainer.addEventListener('input', updateDefaultPrinterOptions);
+        }
+
+        // Initialize on load
+        updateDefaultPrinterOptions();
+      })();
+    </script>
+
+    <section class="card">
+      <h2>Scan to PC</h2>
+      <table class="table" id="scanTable">
+        <thead><tr><th>Software</th><th>Folder Path</th><th style="width:140px">OCR Used?</th><th style="width:120px">Shared?</th><th style="width:100px">Actions</th></tr></thead>
+        <tbody><tr><td><input type="text" placeholder="Software" value=""></td><td><input type="text" placeholder="Folder path" value=""></td><td><select data-current-value=""><option value="" selected="">Select…</option><option>Yes</option><option>No</option></select></td><td><select data-current-value=""><option value="" selected="">Select…</option><option>Yes</option><option>No</option></select></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></tbody>
+      </table>
+      <div class="row" style="margin-top:8px">
+        <div class="col-6"><label>Credentials – U/N</label><input type="text" value=""></div>
+        <div class="col-6"><label>Credentials – PW</label><input type="text" value=""></div>
+      </div>
+      <div class="section-actions"><button class="btn" type="button" onclick="addRow('scan')">＋ Add Destination</button></div>
+    </section>
+
+    <section class="card">
+      <h2>Other / Misc</h2>
+      <div class="row">
+        <div class="col-3"><label>Default Browser</label>
+          <select data-current-value="Microsoft Edge">
+            <option selected="">Microsoft Edge</option>
+            <option>Google Chrome</option>
+            <option>Mozilla Firefox</option>
+            <option>Opera</option>
+            <option>Brave</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="col-3"><label>Default PDF Reader</label><select data-current-value=""><option value="" selected="">Select…</option><option>Adobe Acrobat Pro</option><option>Adobe Reader</option><option>Foxit Reader</option><option>Foxit PhantomPDF</option><option>Edge PDF Viewer</option><option>Chrome PDF Viewer</option><option>PDF-XChange Editor</option><option>SumatraPDF</option><option>Other</option></select></div>
+        <div class="col-3"><label>Default Printer</label>
+          <select id="defaultPrinter" data-current-value=""><option value="" selected="">Select…</option></select>
+        </div>
+        <div class="col-3"><label>Time Zone</label><select data-current-value=""><option value="" selected="">Select…</option><option>Eastern (EST/EDT)</option><option>Central (CST/CDT)</option><option>Mountain (MST/MDT)</option><option>Pacific (PST/PDT)</option><option>Alaska (AKST/AKDT)</option><option>Hawaii (HST)</option><option>Arizona (MST – no DST)</option><option>Guam / Northern Mariana Islands (ChST)</option><option>Puerto Rico / US Virgin Islands (AST)</option><option>Other</option></select></div>
+        <div class="col-3"><label>Firewall</label>
+          <select data-current-value=""><option value="" selected="">Select…</option><option>Yes</option><option>No</option><option>N/A</option></select>
+        </div>
+        <div class="col-3"><label>Windows Color Mode</label>
+          <select data-current-value="Light"><option selected="">Light</option><option>Dark</option><option>Custom</option></select>
+        </div>
+        <div class="col-3"><label>Windows Updates</label>
+          <select data-current-value=""><option value="" selected="">Select…</option><option>Yes</option><option>No</option><option>N/A</option></select>
+        </div>
+        <div class="col-3"><label>Disable Tablet Mode</label>
+          <select data-current-value=""><option value="" selected="">Select…</option><option>Yes</option><option>No</option><option>N/A</option></select>
+        </div>
+        <div class="col-3"><label>Desktop Wallpaper</label>
+          <select data-current-value=""><option value="" selected="">Select…</option><option>Yes</option><option>No</option><option>N/A</option></select>
+        </div>
+        <div class="col-3"><label>MS Teams</label>
+          <select data-current-value=""><option value="" selected="">Select…</option><option>Yes</option><option>No</option><option>N/A</option></select>
+        </div>
+        <div class="col-3"><label>Icon Arrangement</label>
+          <select data-current-value=""><option value="" selected="">Select…</option><option>Yes</option><option>No</option><option>N/A</option></select>
+        </div>
+        <div class="col-3"><label>Power Settings Config</label>
+          <select data-current-value=""><option value="" selected="">Select…</option><option>Yes</option><option>No</option><option>N/A</option></select>
+        </div>
+        <div class="col-3"><label>Credential Manager</label>
+          <select data-current-value=""><option value="" selected="">Select…</option><option>Yes</option><option>No</option><option>N/A</option></select>
+        </div>
+        <div class="col-6"><label>Local Admin – Username</label><input type="text" value=""><div data-lastpass-icon-root="" style="position: relative !important; height: 0px !important; width: 0px !important; display: initial !important; float: left !important;"></div></div>
+        <div class="col-6"><label>Local Admin – Password</label><input type="text" value=""></div>
+      </div>
+      <hr>
+      <div class="inline" style="align-items:center; gap:8px;"><h3 style="margin:4px 0 8px;color:#5d6b82">Other Location Wi‑Fi Profiles</h3><button class="btn" type="button" onclick="window.open('WiFi Guide.pdf', '_blank')">Help?</button></div>
+      <table class="table" id="wifiTable">
+        <thead><tr><th>SSID</th><th>Password</th><th style="width:100px">Actions</th></tr></thead>
+        <tbody><tr><td><input type="text" placeholder="SSID" value=""></td><td><input type="text" placeholder="Password" value=""></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></tbody>
+      </table>
+      <div class="section-actions"><button class="btn" type="button" onclick="addRow('wifi')">＋ Add Wi‑Fi</button></div>
+    </section>
+
+    <section class="card">
+      <h2>Data Migration</h2>
+      <div class="inline" style="margin:6px 0 14px"><label class="inline"><input type="radio" name="mig" checked="" value="on"> Yes</label><label class="inline"><input type="radio" name="mig" value="on"> No</label></div>
+      <div class="row">
+        <div class="col-6">
+          <label style="color:#5d6b82">User profile folders</label>
+          <div class="inline">
+            <label class="inline"><input type="checkbox" value="on"> Favorites</label>
+            <label class="inline"><input type="checkbox" value="on"> Desktop</label>
+            <label class="inline"><input type="checkbox" value="on"> Documents</label>
+            <label class="inline"><input type="checkbox" value="on"> Downloads</label>
+            <label class="inline"><input type="checkbox" value="on"> Links</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <label style="color:#5d6b82">User profile folders</label>
+          <div class="inline">
+            <label class="inline"><input type="checkbox" value="on"> Pictures</label>
+            <label class="inline"><input type="checkbox" value="on"> Videos</label>
+            <label class="inline"><input type="checkbox" value="on"> Music/iTunes</label>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="margin-top:12px">
+        <div class="col-12"><label>Non‑standard Windows folders in root of local drives</label>
+          <table class="table" id="localFoldersTable">
+            <thead><tr><th>Location / Notes</th><th style="width:100px">Actions</th></tr></thead>
+            <tbody><tr><td><input type="text" placeholder="Path and any notes" value=""></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></tbody>
+          </table>
+          <div class="section-actions"><button class="btn" type="button" onclick="addRow('localFolders')">＋ Add Item</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="inline" style="justify-content:space-between;align-items:center"><h2 style="margin:0">Email Accounts</h2>
+        <button class="btn" type="button" onclick="addEmail()">＋ Add Email Account</button>
+      </div>
+      <div id="emailContainer"><div class="card" style="border:1px dashed #e6eaf0; margin-top:12px"><div class="row"><div class="col-3"><label>Application</label><select data-current-value="Outlook"><option selected="">Outlook</option><option>Thunderbird</option><option>Windows Mail</option><option>Web only</option><option>Other</option></select></div><div class="col-3"><label>Email Type</label><select data-current-value="IMAP (Copy Cal &amp; Contacts)"><option selected="">IMAP (Copy Cal &amp; Contacts)</option><option>POP</option><option>Exchange</option><option>O365</option></select></div><div class="col-3"><label>Account</label><input type="text" placeholder="account@domain.com" value=""></div><div class="col-3"><label>Password</label><input type="text" placeholder="••••••" value=""></div><div class="col-12"><label>Notes</label><input type="text" placeholder="notes" value=""></div></div></div></div>
+    </section>
+
+    <section class="card">
+      <div class="inline" style="align-items:center; gap:8px;"><h2>Outlook Migration</h2><button class="btn" type="button" onclick="window.open('WiFi Guide.pdf', '_blank')">Help?</button></div>
+      <div class="row">
+        <div class="col-3"><label>PST</label><select data-current-value=""><option value="" selected="">Select…</option><option>Yes</option><option>No</option><option>N/A</option></select></div>
+        <div class="col-3"><label>Auto Complete / Stream / NK2</label><select data-current-value=""><option value="" selected="">Select…</option><option>Yes</option><option>No</option><option>N/A</option></select></div>
+        <div class="col-3"><label>Signatures</label><select data-current-value=""><option value="" selected="">Select…</option><option>Yes</option><option>No</option><option>N/A</option></select></div>
+        <div class="col-3"><label>User Settings Export</label><select data-current-value=""><option value="" selected="">Select…</option><option>Yes</option><option>No</option><option>N/A</option></select></div>
+        <div class="col-3"><label>Calendars</label><select data-current-value=""><option value="" selected="">Select…</option><option>Yes</option><option>No</option><option>N/A</option></select></div>
+        <div class="col-3"><label>Contacts</label><select data-current-value=""><option value="" selected="">Select…</option><option>Yes</option><option>No</option><option>N/A</option></select></div>
+      </div>
+      <p style="font-size:12px;color:#5d6b82">Registry locations intentionally omitted per requirements.</p>
+    
+<!-- Open To Paste controls (Outlook Migration) -->
+<div class="row" id="openToPasteOutlookRow" style="margin-top:10px;">
+  <div class="col-12">
+    <button id="btnOpenPasteOutlook" class="btn btn-outline-primary" type="button">Open To Paste</button>
+  </div>
+  <div class="col-12" id="pasteContainerOutlook" style="display:none; margin-top:10px;">
+    <label for="pasteZoneOutlook"><strong>Paste Items (text or screenshots):</strong></label>
+    <div id="pasteZoneOutlook" contenteditable="true" class="form-control" style="min-height:140px; border:2px dashed #7aa7ff; border-radius:8px; padding:10px; background:#fafcff; cursor:text;" placeholder="Click here, then Ctrl/Cmd+V to paste… You can also drag &amp; drop images.">
+      <p style="opacity:0.7; margin:0;">Click here and press <kbd>Ctrl/Cmd + V</kbd> to paste text or screenshots. You can also drag and drop images.</p>
+    </div>
+    <div id="pasteGalleryOutlook" class="row" style="margin-top:10px; gap:10px;"></div>
+  </div>
+</div>
+</section>
+    <section class="card">
+      <h2>VPN / RDP</h2>
+      <div class="row">
+        <div class="col-3">
+          <label>Is this computer remotely accessed?</label>
+          <select id="remoteAccessToggle" data-current-value="">
+            <option value="" selected="">Select…</option>
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+          </select>
+        </div>
+      </div>
+      <div id="remoteAccessDetails" style="display:none; margin-top:10px;">
+        <div class="row">
+          <div class="col-3">
+            <label>IP Reservation</label>
+            <input type="text" id="ipReservation" value="">
+          </div>
+          <div class="col-3">
+            <label>Firewall Allowed?</label>
+            <select id="firewallAllowed" data-current-value="">
+              <option value="" selected="">Select…</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <label>Enable Remote Access?</label>
+            <select id="enableRemoteAccess" data-current-value="">
+              <option value="" selected="">Select…</option>
+              <option>Yes</option>
+              <option>No</option>
+            </select>
+          </div>
+          <div class="col-3">
+            <label>Access Method</label>
+            <select id="remoteAccessMethod" data-current-value="">
+              <option value="" selected="">Select…</option>
+              <option>LogMeIn</option>
+              <option>SonicWall Net Extender</option>
+              <option>SonicWall Global VPN</option>
+              <option>OpenVPN</option>
+              <option>WireGuard</option>
+              <option>TeamViewer</option>
+              <option>Splashtop</option>
+              <option>Viscosity</option>
+              <option>VNC</option>
+              <option>Zoho Assist</option>
+              <option>Remote Desktop</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    
+    <section class="card">
+      <h2>Security</h2>
+      <div class="row">
+        <div class="col-3">
+          <label><input type="checkbox" id="securitySoc" name="security_soc"> SOC</label>
+        </div>
+        <div class="col-3">
+          <label><input type="checkbox" id="securityEdr" name="security_edr"> EDR</label>
+        </div>
+        <div class="col-3">
+          <label><input type="checkbox" id="securityTelivy" name="security_telivy"> Telivy (Vuln Scan)</label>
+        </div>
+        <div class="col-3">
+          <label><input type="checkbox" id="securityCove" name="security_cove"> Cove Backup</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label for="securityBullphish">BullPhish</label>
+          <select id="securityBullphish" name="security_bullphish" data-current-value="">
+            <option value="">Select…</option>
+            <option value="N/A">N/A</option>
+            <option value="New User">New User</option>
+            <option value="Existing User">Existing User</option>
+          </select>
+        </div>
+        <div class="col-6">
+          <label for="securityContactInfo">Contact Info</label>
+          <select id="securityContactInfo" name="security_contact_info" data-current-value="">
+            <option value="">Select…</option>
+            <option value="Existing">Existing</option>
+            <option value="New">New</option>
+            <option value="Added To ITG">Added To ITG</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+
+<section class="card">
+      <h2>EDR / RMM – Internal Use</h2>
+      <table class="table" id="edrRmmTable">
+        <thead><tr><th>Item</th><th style="width:200px">Action</th><th>Emailed To</th><th style="width:160px">Date</th><th style="width:100px">Actions</th></tr></thead>
+        <tbody><tr><td><select data-current-value="Agent"><option selected="">Agent</option><option>Antivirus</option><option>Backup</option><option>Script</option><option>Other</option></select></td><td><select data-current-value="Additional"><option selected="">Additional</option><option>Swap</option><option>Remove</option></select></td><td><input type="text" placeholder="Recipients (e.g., JF &amp; JM)" value=""></td><td><input type="date" value=""></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></tbody>
+      </table>
+      <div class="section-actions"><button class="btn" type="button" onclick="addRow('edrRmm')">＋ Add Entry</button></div>
+    </section>
+
+    <section class="grid" style="margin-top:16px">
+      <div class="card col-12" <h2="">Follow Up Needed?
+        <select data-current-value=""><option value="" selected="">Select…</option><option>Yes</option><option>No</option></select>
+      </div>
+      <div class="card col-12" <h2="">Notes
+        <textarea id="notes" placeholder="Add any additional notes here…" class="form-control" rows="6" style="width:100%; min-height:160px; resize:vertical;" <textarea=""></textarea>
+      </div>
+    </section>
+
+    <div class="inline" style="margin:24px; gap:12px; justify-content:center">
+      <button id="downloadHtml" class="btn primary" type="button">💾 Save / Download HTML</button>
+      <button id="emailFormBtn" class="btn" type="button">✉️ Email to Support</button><button id="btnSavePdf" class="btn primary" type="button">Save as PDF</button>
+    </div>
+  </main>
+
+  <template id="row-drives"><tr><td><select class="drive-letter"></select></td><td><input type="text" placeholder="Share name"></td><td><input type="text" placeholder="\\server\share"></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></template>
+  <template id="row-backups"><tr><td><select><option value="">Select…</option><option>Veeam</option><option>Datto</option><option>Cove</option><option>Acronis</option><option>Backblaze</option><option>Carbonite</option><option>MSP360</option><option>Druva</option><option>Other</option></select></td><td><input type="text" placeholder="Local path"></td><td><input type="text" placeholder="Cloud provider / creds"></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></template>
+  <template id="row-apps"><tr><td><input type="text" placeholder="App name"></td><td><input type="text" placeholder="Version"></td><td><input type="text" placeholder="Key / credentials"></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></template>
+  <template id="row-printers"><tr><td><input type="text" placeholder="Printer name"></td><td><input type="text" placeholder="Port / IP"></td><td><input type="text" placeholder="Driver"></td><td><select><option>Color</option><option>B&amp;W</option></select></td><td><select class="printer-shared-select"><option value="">Select…</option><option value="yes">Yes</option><option value="no">No</option></select></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></template>
+  <template id="row-scan"><tr><td><input type="text" placeholder="Software"></td><td><input type="text" placeholder="Folder path"></td><td><select><option value="">Select…</option><option>Yes</option><option>No</option></select></td><td><select><option value="">Select…</option><option>Yes</option><option>No</option></select></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></template>
+  <template id="row-wifi"><tr><td><input type="text" placeholder="SSID"></td><td><input type="text" placeholder="Password"></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></template>
+  <template id="row-localFolders"><tr><td><input type="text" placeholder="Path and any notes"></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></template>
+  <template id="row-edrRmm"><tr><td><select><option>Agent</option><option>Antivirus</option><option>Backup</option><option>Script</option><option>Other</option></select></td><td><select><option>Additional</option><option>Swap</option><option>Remove</option></select></td><td><input type="text" placeholder="Recipients (e.g., JF &amp; JM)"></td><td><input type="date"></td><td class="actions"><button class="btn" type="button" onclick="removeRow(this)">Remove</button></td></tr></template>
+  <template id="email-template"><div class="card" style="border:1px dashed #e6eaf0; margin-top:12px"><div class="row"><div class="col-3"><label>Application</label><select><option>Outlook</option><option>Thunderbird</option><option>Windows Mail</option><option>Web only</option><option>Other</option></select></div><div class="col-3"><label>Email Type</label><select><option>IMAP (Copy Cal &amp; Contacts)</option><option>POP</option><option>Exchange</option><option>O365</option></select></div><div class="col-3"><label>Account</label><input type="text" placeholder="account@domain.com"></div><div class="col-3"><label>Password</label><input type="text" placeholder="••••••"></div><div class="col-12"><label>Notes</label><input type="text" placeholder="notes"></div></div></div></template>
+
+  <script>
+    (function(){
+      const API_BASE = 'https://pc-form-setup.onrender.com';
+
+      const driveLetters = (()=>{ const letters=[]; for(let i=65;i<=90;i++){ letters.push(String.fromCharCode(i)); } return letters.filter(l=>!['A','B'].includes(l)); })();
+
+      function addRow(type){
+        const map={drives:['row-drives','drivesTable'],backups:['row-backups','backupsTable'],apps:['row-apps','appsTable'],printers:['row-printers','printersTable'],scan:['row-scan','scanTable'],wifi:['row-wifi','wifiTable'],localFolders:['row-localFolders','localFoldersTable'],edrRmm:['row-edrRmm','edrRmmTable']};
+        const entry = map[type]; if(!entry) return;
+        const [tplId, tableId] = entry; const tpl=document.getElementById(tplId); const table=document.getElementById(tableId);
+        if(!tpl||!table) return; const tbody=table.querySelector('tbody')||table.appendChild(document.createElement('tbody'));
+        const node = tpl.content.cloneNode(true);
+        if(type==='drives'){ const sel=node.querySelector('select.drive-letter'); if(sel){ driveLetters.forEach(l=>{ const o=document.createElement('option');o.textContent=l+':'; sel.appendChild(o);}); } }
+        tbody.appendChild(node); if(type==='printers') refreshPrinterChoices();
+      }
+      function removeRow(btn){ const row=btn.closest('tr'); const table=row?.closest('table'); if(row) row.remove(); if(table&&table.id==='printersTable') refreshPrinterChoices(); }
+      function addEmail(){ const tpl=document.getElementById('email-template'); if(!tpl) return; const node=tpl.content.cloneNode(true); document.getElementById('emailContainer').appendChild(node); }
+      function refreshPrinterChoices(){ const select=document.getElementById('defaultPrinter'); if(!select) return; const names=[...document.querySelectorAll('#printersTable tbody tr td:first-child input')].map(i=>i.value.trim()).filter(Boolean); const cur=select.value; select.innerHTML='<option value="">Select…</option>'+names.map(n=>`<option>${n}</option>`).join(''); if(names.includes(cur)) select.value=cur; }
+
+      window.addRow=addRow; window.removeRow=removeRow; window.addEmail=addEmail;
+
+      document.addEventListener('DOMContentLoaded',()=>{
+        const ensure=(id,t)=>{ const tb=document.getElementById(id)?.querySelector('tbody'); if(tb && tb.children.length===0){ addRow(t); } };
+        ensure('drivesTable','drives'); ensure('backupsTable','backups'); ensure('appsTable','apps'); ensure('printersTable','printers'); ensure('scanTable','scan'); ensure('wifiTable','wifi'); ensure('localFoldersTable','localFolders'); ensure('edrRmmTable','edrRmm');
+        if(!document.getElementById('emailContainer').children.length){ addEmail(); }
+        refreshPrinterChoices();
+
+        const printersTable=document.getElementById('printersTable'); printersTable && printersTable.addEventListener('input',(e)=>{ if(e.target.closest('td')?.cellIndex===0){ refreshPrinterChoices(); } });
+        printersTable && printersTable.addEventListener('change', (e)=>{
+          const sel = e.target && e.target.closest && e.target.closest('select.printer-shared-select');
+          if (!sel) return;
+          const section = document.getElementById('printerSharedSection');
+          if (!section) return;
+          const selects = document.querySelectorAll('#printersTable select.printer-shared-select');
+          let show = false;
+          selects.forEach(s => { if (s.value === 'yes') show = true; });
+          section.style.display = show ? 'block' : 'none';
+        });
+
+
+        document.getElementById('downloadHtml')?.addEventListener('click', ()=>{
+          persistFormStateToDom();
+          const doctype='<!DOCTYPE html>\n'; const html=document.documentElement.outerHTML;
+          const blob=new Blob([doctype+html],{type:'text/html'});
+          const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='sundance_new_setup_form.html'; a.click(); URL.revokeObjectURL(a.href);
+        });
+
+        const emailBtn=document.getElementById('emailFormBtn');
+        emailBtn && emailBtn.addEventListener('click', async ()=>{
+          try{
+            emailBtn.disabled=true; emailBtn.textContent='Sending…';
+            persistFormStateToDom();
+            const doctype='<!DOCTYPE html>\n'; const html=doctype + document.documentElement.outerHTML;
+            const payload={ to:'support@sundancenetworks.com', subject:'SNI – New Setup / Migration / Reinstall Form', html };
+            const res=await fetch(`${API_BASE}/send`, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+            if(!res.ok) throw new Error('Email failed');
+            alert('Form emailed to support@sundancenetworks.com');
+          }catch(err){ console.error(err); alert('Could not send email. Check the Render service and credentials.'); }
+          finally{ emailBtn.disabled=false; emailBtn.textContent='✉️ Email to Support'; }
+        });
+      });
+
+      function persistFormStateToDom(){
+        const fields=document.querySelectorAll('input, textarea, select');
+        fields.forEach(el=>{
+          if(el.tagName==='SELECT'){
+            Array.from(el.options).forEach(o=>o.removeAttribute('selected'));
+            if(el.multiple){ Array.from(el.selectedOptions).forEach(o=>o.setAttribute('selected','')); }
+            else if(el.selectedIndex>=0){ el.options[el.selectedIndex].setAttribute('selected',''); }
+            el.setAttribute('data-current-value', el.value);
+          } else if(el.tagName==='TEXTAREA'){
+            el.textContent = el.value;
+          } else if(el.type==='checkbox' || el.type==='radio'){
+            if(el.checked){ el.setAttribute('checked',''); } else { el.removeAttribute('checked'); }
+            el.setAttribute('value', el.value);
+          } else { el.setAttribute('value', el.value); }
+        });
+      }
+    })();
+  </script><script>
+  (function() {
+    function getExportRoot() {
+      // Prefer a main container if present, otherwise the whole body
+      return document.querySelector('#formRoot') ||
+             document.querySelector('main') ||
+             document.querySelector('.container') ||
+             document.body;
+    }
+
+    
+    function ensureCdn(cb) {
+      // Already present
+      if (window.html2pdf) { cb(); return; }
+      var cdns = [
+        'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js',
+        'https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js',
+        'https://unpkg.com/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js'
+      ];
+      (function loadNext(i){
+        if (i >= cdns.length) {
+          alert('Could not load PDF engine. Are you offline or is the CDN blocked?');
+          return;
+        }
+        var s = document.createElement('script');
+        s.src = cdns[i];
+        s.onload = cb;
+        s.onerror = function(){ loadNext(i+1); };
+        document.head.appendChild(s);
+      })(0);
+    }
+        function savePdf() {
+      var element = getExportRoot();
+      if (!element) element = document.body;
+      // Optional: temporarily add a class to hide elements marked for exclusion
+      document.documentElement.classList.add('exporting-pdf');
+      var opt = {
+        margin: 10,
+        filename: getPdfFilename(),
+        image: { type: 'jpeg', quality: 0.95 },
+        html2canvas: { scale: 2, useCORS: true, windowWidth: document.documentElement.scrollWidth },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      };
+      window.html2pdf().set(opt).from(element).save().then(function() {
+        document.documentElement.classList.remove('exporting-pdf');
+      }).catch(function() {
+        document.documentElement.classList.remove('exporting-pdf');
+        alert('There was a problem creating the PDF.');
+      });
+    }
+
+    document.addEventListener('click', function(e) { var btn = e.target && (e.target.closest ? e.target.closest('#btnSavePdf') : null); if (btn) {
+        e.preventDefault();
+        ensureCdn(savePdf);
+      }
+    });
+  })();
+</script>
+<style>
+  /* Hide elements marked for export exclusion when generating the PDF */
+  .exporting-pdf [data-export-hide="true"] { display: none !important; }
+  /* Improve printed look a bit */
+  .exporting-pdf body { background: #fff !important; }
+</style>
+
+<script>
+  (function() {
+    if (window.__sundancePdfEnhancer) return;
+    window.__sundancePdfEnhancer = true;
+
+    
+    function ensureCdn(cb) {
+      // Already present
+      if (window.html2pdf) { cb(); return; }
+      var cdns = [
+        'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js',
+        'https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js',
+        'https://unpkg.com/html2pdf.js@0.10.1/dist/html2pdf.bundle.min.js'
+      ];
+      (function loadNext(i){
+        if (i >= cdns.length) {
+          alert('Could not load PDF engine. Are you offline or is the CDN blocked?');
+          return;
+        }
+        var s = document.createElement('script');
+        s.src = cdns[i];
+        s.onload = cb;
+        s.onerror = function(){ loadNext(i+1); };
+        document.head.appendChild(s);
+      })(0);
+    }
+        // Build a cloned DOM for export and normalize styles to avoid truncation
+    function buildExportClone() {
+      var root = document.querySelector('#formRoot') ||
+                 document.querySelector('main') ||
+                 document.querySelector('.container') ||
+                 document.body;
+
+      var clone = root.cloneNode(true);
+
+      // Normalize position so sticky/fixed bars don't overlap or disappear
+      clone.querySelectorAll('*').forEach(function(n){
+        var cs = window.getComputedStyle(n);
+        if (cs.position === 'sticky' || cs.position === 'fixed') {
+          n.style.position = 'static';
+          n.style.top = 'auto'; n.style.bottom = 'auto';
+        }
+        // Avoid clipped content
+        if (cs.overflow === 'hidden') n.style.overflow = 'visible';
+        // Keep sections together if possible
+        n.style.breakInside = 'avoid';
+        n.style.pageBreakInside = 'avoid';
+      });
+
+      // Convert all form controls to text so current values render
+      clone.querySelectorAll('input, textarea, select').forEach(function(el){
+        var tag = el.tagName.toLowerCase();
+        var type = (el.getAttribute('type') || '').toLowerCase();
+        var span = document.createElement('span');
+        span.style.whiteSpace = 'pre-wrap';
+        span.style.display = 'inline-block';
+        span.style.minWidth = '100%';
+        span.style.padding = '6px 8px';
+        span.style.border = '1px solid #ccc';
+        span.style.borderRadius = '6px';
+        if (tag === 'textarea') span.textContent = el.value || '';
+        else if (tag === 'select') span.textContent = Array.from(el.selectedOptions||[]).map(o=>o.textContent.trim()).join(', ');
+        else if (type === 'checkbox') span.textContent = el.checked ? '☑ Yes' : '☐ No';
+        else if (type === 'radio')  span.textContent = (el.checked ? '● ' : '○ ') + (el.value||'');
+        else if (type === 'password') span.textContent = el.value ? '••••••' : '';
+        else span.textContent = el.value || '';
+        el.replaceWith(span);
+      });
+
+      // Title at top (optional)
+      if (!clone.querySelector('h1')) {
+        var h = document.createElement('h1');
+        h.textContent = document.title || 'Sundance Setup Form';
+        h.style.marginBottom = '12px';
+        clone.insertBefore(h, clone.firstChild);
+      }
+
+      // Wrap in container to measure dimensions
+      var wrap = document.createElement('div');
+      wrap.style.padding = '0 8px 8px 8px';
+      wrap.appendChild(clone);
+      return wrap;
+    }
+
+    function savePdf() {
+      var exportNode = buildExportClone();
+      // Measure full size for html2canvas
+      document.body.appendChild(exportNode);
+      var fullW = exportNode.scrollWidth;
+      var fullH = exportNode.scrollHeight;
+      document.body.removeChild(exportNode);
+
+      var opt = {
+        margin: 10,
+        filename: getPdfFilename(),
+        image: { type: 'jpeg', quality: 0.95 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          scrollX: 0,
+          scrollY: 0,
+          windowWidth: fullW,
+          windowHeight: fullH
+        },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak: { mode: ['css', 'legacy'] } // allow multi-page
+      };
+
+      // Now render from the fresh clone (rebuild after measuring so it's clean)
+      var node = buildExportClone();
+      window.html2pdf().set(opt).from(node).save().catch(function(err) {
+        console.error(err);
+        alert('There was a problem creating the PDF.');
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var btn = document.getElementById('btnSavePdf');
+      if (btn) {
+        btn.addEventListener('click', function(e){
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          ensureCdn(savePdf);
+        });
+      }
+    });
+  })();
+</script>
+<style>
+  /* Help the engine understand page breaks and avoid splitting cards */
+  .card { break-inside: avoid; page-break-inside: avoid; }
+  .pdf-break { break-before: page; page-break-before: always; }
+</style>
+<!-- Dynamic PDF filename helper -->
+<script>
+(function(){
+  window.getPdfFilename = function() {
+    var clientEl = document.getElementById('clientName');
+    var companyEl = document.getElementById('companyName');
+    var client = (clientEl && clientEl.value || '').trim();
+    var company = (companyEl && companyEl.value || '').trim();
+    var base = (client || company) ? [client, company].filter(Boolean).join('    ') : 'Sundance-Setup-Form';
+    base = base.replace(/[\/:*?"<>|]/g, '-').trim();
+    return base + '.pdf';
+  };
+})();
+</script>
+
+
+<!-- Toggle for Open To Paste -->
+<script>
+document.addEventListener('click', function(e) {
+  var btn = e.target && (e.target.closest ? e.target.closest('#btnOpenPaste') : null);
+  if (!btn) return;
+  var container = document.getElementById('pasteContainer');
+  if (!container) return;
+  var isHidden = (container.style.display === 'none' || container.style.display === '');
+  container.style.display = isHidden ? 'block' : 'none';
+  btn.textContent = isHidden ? 'Hide Paste Area' : 'Open To Paste';
+});
+</script>
+
+
+<!-- Inline pasted images before saving HTML or PDF -->
+<script>
+(function(){
+  async function blobToDataURL(url) {
+    const res = await fetch(url);
+    const blob = await res.blob();
+    return await new Promise((resolve)=>{
+      const r = new FileReader();
+      r.onload = ()=>resolve(r.result);
+      r.readAsDataURL(blob);
+    });
+  }
+
+  async function inlineBlobImages(root) {
+    const imgs = root.querySelectorAll('img[src^="blob:"]');
+    for (const img of imgs) {
+      try {
+        const dataURL = await blobToDataURL(img.src);
+        img.src = dataURL;
+      } catch(e) {
+        console.warn('Could not inline image', e);
+      }
+    }
+  }
+
+  // Wrap existing savePdf and (if present) saveHtml
+  const wrap = (name)=>{
+    const fn = window[name];
+    if (typeof fn !== 'function') return;
+    window[name] = async function(){
+      await inlineBlobImages(document);
+      return fn.apply(this, arguments);
+    };
+  };
+  wrap('savePdf');
+  wrap('saveHtml'); // in case you have a separate save HTML function
+
+  // Also catch clicks on common buttons if functions are not directly called
+  document.addEventListener('click', async function(e){
+    var savePdfBtn = e.target && (e.target.closest ? e.target.closest('#btnSavePdf') : null);
+    var saveHtmlBtn = e.target && (e.target.closest ? e.target.closest('#btnSaveHtml, #btnSaveDownloadHtml') : null);
+    if (savePdfBtn || saveHtmlBtn) {
+      await inlineBlobImages(document);
+    }
+  });
+})();
+</script>
+
+
+<!-- Toggle & Paste handlers for Outlook Migration (fixed) -->
+<script>
+(function(){
+  // Toggle handler (delegated)
+  document.addEventListener('click', function(e){
+    var btn = e.target && (e.target.closest ? e.target.closest('#btnOpenPasteOutlook') : null);
+    if (!btn) return;
+    var box = document.getElementById('pasteContainerOutlook');
+    if (!box) return;
+    var hidden = (box.style.display === 'none' || box.style.display === '');
+    box.style.display = hidden ? 'block' : 'none';
+    btn.textContent = hidden ? 'Hide Paste Area' : 'Open To Paste';
+  });
+
+  // Create preview from DataURL (so it persists in HTML/PDF)
+  function makeImgPreviewFromDataURL(dataURL, name) {
+    var col = document.createElement('div');
+    col.className = 'col-3';
+    col.style.position = 'relative';
+    col.style.maxWidth = '180px';
+
+    var img = document.createElement('img');
+    img.src = dataURL;
+    img.style.width = '100%';
+    img.style.height = 'auto';
+    img.style.borderRadius = '8px';
+    img.style.boxShadow = '0 1px 3px rgba(0,0,0,0.15)';
+    img.alt = name || 'pasted image';
+
+    var remove = document.createElement('button');
+    remove.type = 'button';
+    remove.textContent = '×';
+    remove.title = 'Remove';
+    remove.style.position = 'absolute';
+    remove.style.top = '4px';
+    remove.style.right = '6px';
+    remove.style.border = 'none';
+    remove.style.borderRadius = '999px';
+    remove.style.width = '24px';
+    remove.style.height = '24px';
+    remove.style.lineHeight = '20px';
+    remove.style.fontSize = '16px';
+    remove.style.cursor = 'pointer';
+    remove.style.background = '#ffffff';
+    remove.style.boxShadow = '0 1px 3px rgba(0,0,0,0.2)';
+    remove.addEventListener('click', function(){ col.remove(); });
+
+    col.appendChild(img);
+    col.appendChild(remove);
+    return col;
+  }
+
+  function handleFiles(files) {
+    var gallery = document.getElementById('pasteGalleryOutlook');
+    if (!gallery) return;
+    Array.from(files).forEach(function(f){
+      if (f && f.type && f.type.indexOf('image') === 0) {
+        var reader = new FileReader();
+        reader.onload = function(ev){
+          gallery.appendChild(makeImgPreviewFromDataURL(ev.target.result, f.name));
+        };
+        reader.readAsDataURL(f);
+      }
+    });
+  }
+
+  var zone = document.getElementById('pasteZoneOutlook');
+  if (!zone) return;
+
+  // Paste handler (convert images to DataURL; allow text to paste normally)
+  zone.addEventListener('paste', function(e){
+    var cd = e.clipboardData;
+    var hadImage = false;
+    if (cd && cd.items) {
+      for (var i=0; i<cd.items.length; i++) {
+        var it = cd.items[i];
+        if (it.type && it.type.indexOf('image') === 0) {
+          var file = it.getAsFile();
+          if (file) {
+            handleFiles([file]);
+            hadImage = true;
+          }
+        }
+      }
+    }
+    if (hadImage) { e.preventDefault(); }
+  });
+
+  // Drag & drop support
+  ['dragenter','dragover'].forEach(function(evt){
+    zone.addEventListener(evt, function(e){ e.preventDefault(); e.stopPropagation(); zone.style.background = '#eef4ff'; });
+  });
+  ['dragleave','drop'].forEach(function(evt){
+    zone.addEventListener(evt, function(e){ e.preventDefault(); e.stopPropagation(); zone.style.background = '#fafcff'; });
+  });
+  zone.addEventListener('drop', function(e){
+    if (e.dataTransfer && e.dataTransfer.files) { handleFiles(e.dataTransfer.files); }
+  });
+})();
+</script>
+
+
+<script>
+  (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      var toggle = document.getElementById('remoteAccessToggle');
+      var details = document.getElementById('remoteAccessDetails');
+      if (!toggle || !details) return;
+      function updateDetails() {
+        details.style.display = (toggle.value === 'yes') ? 'block' : 'none';
+      }
+      toggle.addEventListener('change', updateDetails);
+      updateDetails();
+    });
+  })();
+</script>
+
+
+<script>
+  (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+      var qbToggle = document.getElementById('quickbooksToggle');
+      var qbDetails = document.getElementById('quickbooksDetails');
+      if (!qbToggle || !qbDetails) return;
+      function updateQB() {
+        qbDetails.style.display = (qbToggle.value === 'yes') ? 'block' : 'none';
+      }
+      qbToggle.addEventListener('change', updateQB);
+      updateQB();
+    });
+  })();
+</script>
+
+
+
+<script>
+  (function () {
+    const STORAGE_KEY = 'sundance_setup_form_v2';
+
+    function getAllFields() {
+      return Array.from(document.querySelectorAll('input, select, textarea'));
+    }
+
+    function saveFormToStorage() {
+      const fields = getAllFields();
+      const data = fields.map(function (el) {
+        const entry = {
+          tag: el.tagName,
+          type: el.type || ''
+        };
+        if (el.type === 'checkbox' || el.type === 'radio') {
+          entry.checked = !!el.checked;
+        } else {
+          entry.value = el.value;
+        }
+        return entry;
+      });
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      } catch (e) {
+        console.warn('Unable to save form data:', e);
+      }
+    }
+
+    function loadFormFromStorage() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const data = JSON.parse(raw);
+        const fields = getAllFields();
+        data.forEach(function (entry, index) {
+          const el = fields[index];
+          if (!el) return;
+          if (el.type === 'checkbox' || el.type === 'radio') {
+            el.checked = !!entry.checked;
+          } else if ('value' in entry) {
+            el.value = entry.value;
+          }
+          // Trigger events so any dependent UI stays in sync
+          el.dispatchEvent(new Event('change', { bubbles: true }));
+          el.dispatchEvent(new Event('input', { bubbles: true }));
+        });
+      } catch (e) {
+        console.warn('Unable to load saved form data:', e);
+      }
+    }
+
+    function clearFormStorage() {
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch (e) {
+        console.warn('Unable to clear saved form data:', e);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // Load saved values first
+      loadFormFromStorage();
+
+      // Auto-save on any change/input
+      document.addEventListener('input', saveFormToStorage);
+      document.addEventListener('change', saveFormToStorage);
+
+      // "Save Current Data" button explicitly triggers a save
+      const saveBtn = document.getElementById('saveCurrentDataBtn');
+      if (saveBtn) {
+        saveBtn.addEventListener('click', function () {
+          saveFormToStorage();
+        });
+      }
+
+      // "Clear Saved Data" button clears storage and the form fields
+      const clearBtn = document.getElementById('clearSavedForm');
+      if (clearBtn) {
+        clearBtn.addEventListener('click', function () {
+          if (!confirm('Clear saved data for this form in this browser?')) return;
+
+          // Remove saved data from localStorage
+          clearFormStorage();
+
+          // Clear ALL visible field values so the user sees a clean slate
+          const fields = getAllFields();
+          fields.forEach(function (el) {
+            if (el.type === 'checkbox' || el.type === 'radio') {
+              el.checked = false;
+            } else if (el.tagName === 'SELECT') {
+              el.selectedIndex = 0;
+            } else {
+              el.value = '';
+            }
+            el.dispatchEvent(new Event('change', { bubbles: true }));
+            el.dispatchEvent(new Event('input', { bubbles: true }));
+          });
+
+          // Save the now-empty state so refresh also shows a blank form
+          saveFormToStorage();
+        });
+      }
+    });
+  })();
+</script>
+
+<div class="chrome-extension-menu"></div><div class="chrome-extension-menu"></div><section class="Toastify" aria-live="polite" aria-atomic="false" aria-relevant="additions text" aria-label="Notifications Alt+T"></section><section class="Toastify" aria-live="polite" aria-atomic="false" aria-relevant="additions text" aria-label="Notifications Alt+T"></section><div data-lastpass-root="" style="position: absolute !important; top: 0px !important; left: 0px !important; height: 0px !important; width: 0px !important; display: initial !important;"></div></body></html>
