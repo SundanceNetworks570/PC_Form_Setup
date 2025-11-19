@@ -75,7 +75,54 @@ app.get('/smtp-test', async (_req, res) => {
   }
 });
 
-/* ---------------- Send route ---------------- */
+/* ---------------- Helper: format Phone Slip email ---------------- */
+function formatPhoneSlipEmail(data = {}) {
+  const lines = [
+    `Date: ${data.date || ''}`,
+    `Time: ${data.time || ''}`,
+    `First Name: ${data.firstName || ''}`,
+    `Last Name: ${data.lastName || ''}`,
+    `Business: ${data.business || ''}`,
+    `Phone: ${data.phone || ''}`,
+    `Extension: ${data.extension || ''}`,
+    `Email: ${data.email || ''}`,
+    `Urgency: ${data.urgency || ''}`,
+    '',
+    'Description:',
+    data.description || '',
+    '',
+    `Tech (took call): ${data.tech || ''}`,
+    '',
+    `Source: ${data.source || ''}`,
+    `Origin URL: ${data.origin || ''}`,
+  ];
+
+  return lines.join('\n');
+}
+
+/* ---------------- NEW: Phone Slip route ---------------- */
+app.post('/phone-slip', async (req, res) => {
+  try {
+    const data = req.body || {};
+
+    // If frontend sends a pre-built textBody, use it; otherwise build on server
+    const textBody = data.textBody || formatPhoneSlipEmail(data);
+
+    await transporter.sendMail({
+      from: process.env.FROM_EMAIL || process.env.SMTP_USER,
+      to: 'support@sundancenetworks.com',           // add more recipients if desired
+      subject: `New Phone Slip${data.urgency ? ' - ' + data.urgency : ''}`,
+      text: textBody,
+    });
+
+    res.json({ ok: true });
+  } catch (err) {
+    console.error('[mailer] phone-slip failed:', err);
+    res.status(500).json({ ok: false, error: String(err?.message || err) });
+  }
+});
+
+/* ---------------- Existing /send route (leave as-is) ---------------- */
 app.post('/send', async (req, res) => {
   try {
     const { to, subject, html } = req.body || {};
