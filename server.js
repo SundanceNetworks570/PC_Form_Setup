@@ -10,7 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 
 /* ---------------- CORS (GitHub Pages origin) ---------------- */
-const ALLOWED_ORIGINS = ['https://sundancenetworks570.github.io','https://phoneslips.pages.dev'];
+const ALLOWED_ORIGINS = ['https://sundancenetworks570.github.io','https://phoneslips.pages.dev','https://sop-718.pages.dev'];
 const corsOpts = {
   origin: (origin, cb) => {
     if (!origin || ALLOWED_ORIGINS.includes(origin)) return cb(null, true);
