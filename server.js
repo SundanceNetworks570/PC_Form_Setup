@@ -110,7 +110,8 @@ app.post('/phone-slip', async (req, res) => {
 
     await transporter.sendMail({
       from: process.env.FROM_EMAIL || process.env.SMTP_USER,
-      to: 'support@sundancenetworks.com','the20group@sundancenetworks.com'           // add more recipients if desired
+      to: 'support@sundancenetworks.com',                   // add more recipients if desired
+      cc: 'the20group@sundancenetworks.com'
       subject: `New Phone Slip${data.urgency ? ' - ' + data.urgency : ''}`,
       text: textBody,
     });
