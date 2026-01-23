@@ -112,7 +112,7 @@ app.post('/phone-slip', async (req, res) => {
       from: process.env.FROM_EMAIL || process.env.SMTP_USER,
       to: 'support@sundancenetworks.com',           // add more recipients if desired
       cc: 'the20group@sundancenetworks.com',
-      subject: `Attention Please Advise${data.urgency ? ' - ' + data.urgency : ''}`,
+      subject: `New Phone Slip${data.urgency ? ' - ' + data.urgency : ''}`,
       text: textBody,
     });
 
