@@ -10,7 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 
 /* ---------------- CORS (GitHub Pages origin) ---------------- */
-const ALLOWED_ORIGINS = ['https://sundancenetworks570.github.io','https://phoneslips.pages.dev','https://sop-718.pages.dev','https://employeeonboardingform.pages.dev'];
+const ALLOWED_ORIGINS = ['https://sundancenetworks570.github.io','https://phoneslips.pages.dev','https://sop-718.pages.dev'];
 const corsOpts = {
   origin: (origin, cb) => {
     if (!origin || ALLOWED_ORIGINS.includes(origin)) return cb(null, true);
@@ -111,8 +111,8 @@ app.post('/phone-slip', async (req, res) => {
     await transporter.sendMail({
       from: process.env.FROM_EMAIL || process.env.SMTP_USER,
       to: 'support@sundancenetworks.com',           // add more recipients if desired
-      cc: 'the20group@sundancenetworks.com'
-      subject: `Attention - Please Advise'${data.urgency ? ' - ' + data.urgency : ''}`,
+      cc: 'the20group@sundancenetworks.com',
+      subject: `Attention Please Advise${data.urgency ? ' - ' + data.urgency : ''}`,
       text: textBody,
     });
 
